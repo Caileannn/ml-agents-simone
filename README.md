@@ -23,6 +23,8 @@ You can follow the setup instructions for Windows [here](https://github.com/Unit
 	- [ ] Ecosystem
 - [ ] Explore Marathon Envs & Mujoco
 
+## Documentation
+
 ### Multiple Brain: Reading & Setting Models during runtime from a local directory
 You can find this method in `SwapModel.cs`. 
 ### Extracting & Displaying trainging information
