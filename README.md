@@ -14,11 +14,13 @@ You can follow the setup instructions for Windows [here](https://github.com/Unit
 - [x] Working w/ Multiple Brains
 	- [x] Read & Wrtie .ONNX files
 	- [x] Set .ONNX files to Agent during runtime
-- [ ] Extract training information
-	- [ ] Display that information in Unity (GUI)
+- [x] Extract training information
+	- [x] Display that information in Unity (GUI)
 - [ ] Flexible Training Scenarios
 	- [ ] Investigate Adversarial Self-Play
 	- [ ] Cooperative Multi-Agent Play
 	- [ ] Competitive Multi-Agent
 	- [ ] Ecosystem
 - [ ] Explore Marathon Envs & Mujoco
+
+### Extracting & Displaying trainging information

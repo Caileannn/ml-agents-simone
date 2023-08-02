@@ -12,15 +12,15 @@ using System.Linq;
 public class SwapModel : MonoBehaviour
 {
     // Models
-    public NNModel green;
-    public NNModel red;
+
+    public NNModel m_InitialModel;
     public Agent agent;
 
     [HideInInspector] public List<NNModel> nnModelList;
     [HideInInspector] public int currentModel = 0;
 
     // Path to .onnx files
-    string dirPath = "C:\\Users\\caile\\Desktop\\Projects\\23_07-MLAgents\\results\\23_08_01-07\\Swap";
+    string m_dirPath = "C:\\Users\\caile\\Desktop\\Projects\\23_07-MLAgents\\results\\23_08_01-07\\Swap";
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class SwapModel : MonoBehaviour
 
     public void NNFileList()
     {
-        DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
+        DirectoryInfo dirInfo = new DirectoryInfo(m_dirPath);
         FileInfo[] nnList = dirInfo.GetFiles("*.onnx");
 
         // Sort files by creation date
@@ -64,8 +64,10 @@ public class SwapModel : MonoBehaviour
             nnModelList.Add(result);
         }
 
+        Debug.Log(nnModelList[currentModel]);
         // Set the inital model to 0
-        red = nnModelList[currentModel];
+        m_InitialModel = nnModelList[currentModel];
+        GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
     }
 
     public void SwitchModel(int modelActive)
@@ -80,10 +82,11 @@ public class SwapModel : MonoBehaviour
             }
 
             agent.SetModel("Swap", nnModelList[currentModel]);
+            GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
         }
         else if (modelActive == 3)
         {
-            agent.SetModel("Swap", green);
+            agent.SetModel("Swap", m_InitialModel);
         }
         // If right, move up in array
         else
@@ -95,6 +98,7 @@ public class SwapModel : MonoBehaviour
             }
 
             agent.SetModel("Swap", nnModelList[currentModel]);
+            GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
         }
     }
 };

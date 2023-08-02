@@ -84,6 +84,8 @@ public class SwapAgent : Agent
 
 		if (targetChoice) { target = greenTarget; }
 		else { target = redTarget; }
+
+       
     }
 
     /// <summary>
@@ -216,6 +218,12 @@ public class SwapAgent : Agent
             target = redTarget;
             modelSwapper.SwitchModel(1);
         }
+
+        Monitor.Log("Episode Count", StepCount.ToString(), body, Camera.main);
+        Monitor.Log("Completed Episodes", CompletedEpisodes.ToString(), body, Camera.main);
+        Monitor.Log("Succes", GlobalVars.g_Success.ToString(), body, Camera.main);
+        Monitor.Log("Failure", GlobalVars.g_Failure.ToString(), body, Camera.main);
+        Monitor.Log("Current Model", GlobalVars.g_CurrentModel, body, Camera.main);
     }
 
     void FixedUpdate()

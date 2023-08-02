@@ -29,14 +29,15 @@ public class EnvironmentController : MonoBehaviour
 
         if (targetChoice && collide.name == "Green_Target")
         {
-           
+            GlobalVars.g_Success += 1;
         }
         else if (!targetChoice && collide.name == "Red_Target")
         {
-            
+            GlobalVars.g_Success += 1;
         }
         else
         {
+            GlobalVars.g_Failure += 1;
             agent.AddReward(-1f);
             agent.EndEpisode();
         }
