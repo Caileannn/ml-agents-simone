@@ -15,7 +15,7 @@ You can follow the setup instructions for Windows [here](https://github.com/Unit
 	- [x] Read & Wrtie .ONNX files
 	- [x] Set .ONNX files to Agent during runtime
 - [ ] Extract training information
-	- [] Display that information in Unity (GUI)
+	- [ ] Display that information in Unity (GUI)
 - [ ] Flexible Training Scenarios
 	- [ ] Investigate Adversarial Self-Play
 	- [ ] Cooperative Multi-Agent Play
