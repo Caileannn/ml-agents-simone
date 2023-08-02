@@ -23,8 +23,8 @@ You can follow the setup instructions for Windows [here](https://github.com/Unit
 	- [ ] Ecosystem
 - [ ] Explore Marathon Envs & Mujoco
 
+### Multiple Brain: Reading & Setting Models during runtime from a local directory
+You can find this method in `SwapModel.cs`. 
 ### Extracting & Displaying trainging information
-
 ![c_Monitor](https://github.com/Caileannn/ml-agents-simone/assets/25906839/06d45f96-3425-4daa-9fcf-52756017f5c8)
-
-By using the Monitor.cs script, you can easily display information about the agent. I also added a display for the swapping of the models within a local directory.
+By using the `Monitor.cs` script, you can easily display information about the agent. I also added a display for the swapping of the models within a local directory.
