@@ -13,6 +13,10 @@ public class SwapAgent : Agent
     //The direction an agent will walk during training.
     private Vector3 m_WorldDirToWalk = Vector3.right;
 
+    [HideInInspector] public Boolean m_RandomActuations = false;
+
+    [HideInInspector] public float m_ActuationsValue = 0f;
+
     [Header("Red Target")] public Transform redTarget; //Target the agent will walk towards during training.
 	
 	[Header("Green Target")] public Transform greenTarget; //Target the agent will walk towards during training.
@@ -177,12 +181,23 @@ public class SwapAgent : Agent
         var i = -1;
 
         var continuousActions = actionBuffers.ContinuousActions;
-        bpDict[arml].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], continuousActions[++i]);
-        bpDict[armr].SetJointTargetRotation(continuousActions[++i], continuousActions[++i], continuousActions[++i]);
+        bpDict[arml].SetJointTargetRotation(continuousActions[++i] + RandomActuations(), continuousActions[++i] + RandomActuations(), continuousActions[++i] + RandomActuations());
+        bpDict[armr].SetJointTargetRotation(continuousActions[++i] + RandomActuations(), continuousActions[++i] + RandomActuations(), continuousActions[++i] + RandomActuations());
 
         //update joint strength settings
         bpDict[arml].SetJointStrength(continuousActions[++i]);
         bpDict[armr].SetJointStrength(continuousActions[++i]);
+    }
+
+    public float RandomActuations()
+    {
+        if (m_RandomActuations)
+        {
+            float randomFloat = Random.Range(-m_ActuationsValue, m_ActuationsValue);
+            return randomFloat;
+        }
+
+        return 0f;
     }
 
 	public override void Heuristic(in ActionBuffers actionsOut)
@@ -219,11 +234,36 @@ public class SwapAgent : Agent
             modelSwapper.SwitchModel(1);
         }
 
-        Monitor.Log("Episode Count", StepCount.ToString(), body, Camera.main);
-        Monitor.Log("Completed Episodes", CompletedEpisodes.ToString(), body, Camera.main);
-        Monitor.Log("Succes", GlobalVars.g_Success.ToString(), body, Camera.main);
-        Monitor.Log("Failure", GlobalVars.g_Failure.ToString(), body, Camera.main);
-        Monitor.Log("Current Model", GlobalVars.g_CurrentModel, body, Camera.main);
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            Debug.Log("Noise+");
+            m_ActuationsValue += 0.5f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            Debug.Log("Noise-");
+            m_ActuationsValue -= 0.5f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if(!m_RandomActuations) 
+            {
+                Debug.Log("Random Actuations On");
+                m_RandomActuations = true;
+            } 
+            else
+            {
+                Debug.Log("Random Actuations Off");
+                m_ActuationsValue = 0f;
+                m_RandomActuations = false;
+            }
+            
+        }
+
+
+        Monitor.Log("Random Actuations", m_RandomActuations.ToString(), body, Camera.main);
+        Monitor.Log("Actuation Value", m_ActuationsValue/10, body, Camera.main);
+        //Monitor.Log("Actuation Value", m_ActuationsValue, body, Camera.main);
     }
 
     void FixedUpdate()
