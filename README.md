@@ -1,4 +1,4 @@
-![c_RandomActuations](https://github.com/Caileannn/ml-agents-simone/assets/25906839/76016554-abb6-4c87-924c-508095adb45e)# ML-Agents Experiments 🧠🤖
+# ML-Agents Experiments 🧠🤖
 
 This repository is for *experimenting* with ML Agents & Unity.
 
