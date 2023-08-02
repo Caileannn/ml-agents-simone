@@ -1,4 +1,4 @@
-# ML-Agents Experiments 🧠🤖
+![c_RandomActuations](https://github.com/Caileannn/ml-agents-simone/assets/25906839/76016554-abb6-4c87-924c-508095adb45e)# ML-Agents Experiments 🧠🤖
 
 This repository is for *experimenting* with ML Agents & Unity.
 
@@ -32,3 +32,7 @@ You can find this method in `SwapModel.cs`.
 ![c_Monitor](https://github.com/Caileannn/ml-agents-simone/assets/25906839/06d45f96-3425-4daa-9fcf-52756017f5c8)
 
 By using the `Monitor.cs` script, you can easily display information about the agent. I also added a display for the swapping of the models within a local directory.
+
+![c_RandomActuations](https://github.com/Caileannn/ml-agents-simone/assets/25906839/6882c0bb-54fb-44a5-b479-42c8ca97cbe2)
+
+When looking at what information to extract, the actions performed by the agent at each step is a float value between -1.0, 1.0. For this example, I added a small amount of noise to each action. I almost feel sad for the agent.. an odd form of computational torture, controlled by forces ubeknownest to it.
