@@ -70,7 +70,7 @@ public class SwapModel : MonoBehaviour
         GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
     }
 
-    public void SwitchModel(int modelActive)
+    public void SwitchModel(int modelActive, Agent inst)
     {
         // If left, move down in array
         if (modelActive == 0)
@@ -81,12 +81,12 @@ public class SwapModel : MonoBehaviour
                 currentModel = 0;
             }
 
-            agent.SetModel("Swap", nnModelList[currentModel]);
+            inst.SetModel("Swap", nnModelList[currentModel]);
             GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
         }
         else if (modelActive == 3)
         {
-            agent.SetModel("Swap", m_InitialModel);
+            inst.SetModel("Swap", m_InitialModel);
         }
         // If right, move up in array
         else
@@ -97,7 +97,7 @@ public class SwapModel : MonoBehaviour
                 currentModel = nnModelList.Count - 1;
             }
 
-            agent.SetModel("Swap", nnModelList[currentModel]);
+            inst.SetModel("Swap", nnModelList[currentModel]);
             GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
         }
     }

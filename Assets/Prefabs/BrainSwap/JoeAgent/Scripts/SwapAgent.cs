@@ -17,9 +17,9 @@ public class SwapAgent : Agent
 
     [HideInInspector] public float m_ActuationsValue = 0f;
 
-    [Header("Red Target")] public Transform redTarget; //Target the agent will walk towards during training.
+    [HideInInspector] public Transform redTarget; //Target the agent will walk towards during training.
 	
-	[Header("Green Target")] public Transform greenTarget; //Target the agent will walk towards during training.
+	[HideInInspector] public Transform greenTarget; //Target the agent will walk towards during training.
 
 
     [Header("Body Parts")] public Transform body;
@@ -27,12 +27,9 @@ public class SwapAgent : Agent
     public Transform armr;
 
     [HideInInspector]
-	public EnvironmentController envCont;
-
-    [HideInInspector]
     public SwapModel modelSwapper;
 
-    [Header("Area")]
+    [HideInInspector]
     public GameObject area;
 
     Transform target;
@@ -79,12 +76,24 @@ public class SwapAgent : Agent
     public override void Initialize()
     {
         m_OrientationCube = GetComponentInChildren<OrientationCubeController>();
+        // Set targets green/red
+
+        redTarget = GameObject.Find("Red_Target").transform;
+        greenTarget = GameObject.Find("Green_Target").transform;
+        area = GameObject.Find("Environment");
 
         //Setup each body part
         m_JdController = GetComponent<JointDriveController>();
         m_JdController.SetupBodyPart(body);
         m_JdController.SetupBodyPart(arml);
         m_JdController.SetupBodyPart(armr);
+
+        foreach (var bp in m_JdController.bodyPartsList)
+        {
+            Debug.Log("INT: " + bp.rb.transform);
+        }
+
+        
 
 		if (targetChoice) { target = greenTarget; }
 		else { target = redTarget; }
@@ -100,7 +109,7 @@ public class SwapAgent : Agent
         modelSwapper = area.GetComponent<SwapModel>();
 
         // Set Init model
-        modelSwapper.SwitchModel(3);
+        modelSwapper.SwitchModel(3, this);
         // Get initial position of Agent
         m_initalAgentPosition = body.position;
 
@@ -147,6 +156,7 @@ public class SwapAgent : Agent
     /// </summary>
     public override void CollectObservations(VectorSensor sensor)
     {
+        var bodyCount = 0;
         var cubeForward = m_OrientationCube.transform.forward;
 
         //velocity we want to match
@@ -170,7 +180,16 @@ public class SwapAgent : Agent
 
         foreach (var bodyPart in m_JdController.bodyPartsList)
         {
+            bodyCount++;
             CollectObservationBodyPart(bodyPart, sensor);
+        }
+
+        if(bodyCount == 6)
+        {
+            foreach (var bp in m_JdController.bodyPartsList)
+            {
+                Debug.Log(bp.rb.transform);
+            }
         }
     }
 
@@ -224,14 +243,14 @@ public class SwapAgent : Agent
         {
             Debug.Log("L");
             target = redTarget;
-            modelSwapper.SwitchModel(0);
+            modelSwapper.SwitchModel(0, this);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("R");
             target = redTarget;
-            modelSwapper.SwitchModel(1);
+            modelSwapper.SwitchModel(1, this);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
@@ -261,8 +280,8 @@ public class SwapAgent : Agent
         }
 
 
-        Monitor.Log("Random Actuations", m_RandomActuations.ToString(), body, Camera.main);
-        Monitor.Log("Actuation Value", m_ActuationsValue/10, body, Camera.main);
+        //Monitor.Log("Random Actuations", m_RandomActuations.ToString(), body, Camera.main);
+        //Monitor.Log("Actuation Value", m_ActuationsValue/10, body, Camera.main);
         //Monitor.Log("Actuation Value", m_ActuationsValue, body, Camera.main);
     }
 
