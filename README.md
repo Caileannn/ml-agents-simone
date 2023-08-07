@@ -22,7 +22,7 @@ You can follow the setup instructions for Windows [here](https://github.com/Unit
 	- [ ] Competitive Multi-Agent
 	- [ ] Ecosystem
 - [ ] Explore Marathon Envs & Mujoco
-- [ ] Control Spawning Rate
+- [x] Instancing Agents
 
 ## Documentation
 
