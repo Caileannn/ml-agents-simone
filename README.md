@@ -38,3 +38,13 @@ By using the `Monitor.cs` script, you can easily display information about the a
 ![c_RandomActuations](https://github.com/Caileannn/ml-agents-simone/assets/25906839/6882c0bb-54fb-44a5-b479-42c8ca97cbe2)
 
 When looking at what information to extract, the actions performed by the agent at each step is a float value between -1.0, 1.0. For this example, I added a small amount of noise to each action. I almost feel sad for the agent.. an odd form of computational torture, controlled by forces ubeknownest to it.
+
+### Instancing Agents
+![c_basespawn](https://github.com/Caileannn/ml-agents-simone/assets/25906839/4b826e3a-a1f0-4a8c-8c0f-93a5d66897f7)
+
+Experiments with instancing in Unity for Agents. The instance spawner allows for unqiue agents to spawn into a scene. There was a ton of issues with instancing agents which inherits the Agent class, as it would initialise twice, meaning double the body parts in the joint dictionary, and leading to the number of observations increasing - which is never good.. The reason why I built this was because it might be a nice way to visualise past evolutions/models.
+
+![c_rapidspawn](https://github.com/Caileannn/ml-agents-simone/assets/25906839/cd8afa1f-fe85-4b47-b7e2-cdc8662cafb9)
+
+
+
