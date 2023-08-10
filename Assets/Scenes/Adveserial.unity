@@ -415,6 +415,9 @@ MonoBehaviour:
   agentRb: {fileID: 0}
   initialPosition: {x: 0, y: 0, z: 0}
   rotationSign: 0
+  body: {fileID: 2113925525}
+  arml: {fileID: 2043887903}
+  armr: {fileID: 7589538}
 --- !u!1 &227480349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,6 +2968,9 @@ MonoBehaviour:
   agentRb: {fileID: 0}
   initialPosition: {x: 0, y: 0, z: 0}
   rotationSign: 0
+  body: {fileID: 5480578932058548897}
+  arml: {fileID: 2262748546445702051}
+  armr: {fileID: 3330420123602914776}
 --- !u!114 &9096585255289934177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,7 +2997,7 @@ MonoBehaviour:
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: AdvAgent
-  TeamId: 0
+  TeamId: 1
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_DeterministicInference: 0
