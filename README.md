@@ -17,7 +17,7 @@ You can follow the setup instructions for Windows [here](https://github.com/Unit
 - [x] Extract training information
 	- [x] Display that information in Unity (GUI)
 - [ ] Flexible Training Scenarios
-	- [ ] Investigate Adversarial Self-Play
+	- [x] Investigate Adversarial Self-Play
 	- [ ] Cooperative Multi-Agent Play
 	- [ ] Competitive Multi-Agent
 	- [ ] Ecosystem
