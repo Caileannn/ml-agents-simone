@@ -20,13 +20,13 @@ public class BallController : MonoBehaviour
 		// Ball touched by purple agent
         if (col.gameObject.CompareTag(purpleBallTag))
 		{
-			envController.BallTouched(Team.Purple);
+			//envController.BallTouched(Team.Purple);
 		} 
 
 		// Ball touched by blue agent
 		if (col.gameObject.CompareTag(blueBallTag))
 		{
-			envController.BallTouched(Team.Blue);
+            envController.BallTouched(Team.Blue);
 		} 
     }
 }

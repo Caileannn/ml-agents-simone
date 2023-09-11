@@ -14,8 +14,6 @@ public class AgentEnvController : MonoBehaviour
 		public Vector3 StartingPosition;
 		[HideInInspector]
 		public Quaternion StratingRotation;
-		[HideInInspector]
-		public Rigidbody Rb;
 	}
 
 	/// <summary>
@@ -33,8 +31,8 @@ public class AgentEnvController : MonoBehaviour
 
 	private AgentSettings m_AgentSettings;
 
-	private SimpleMultiAgentGroup m_BlueAgentGroup;
-	private SimpleMultiAgentGroup m_PurpleAgentGroup;
+	//private SimpleMultiAgentGroup m_BlueAgentGroup;
+	//private SimpleMultiAgentGroup m_PurpleAgentGroup;
 
 	private int m_ResetTimer;
 
@@ -43,24 +41,24 @@ public class AgentEnvController : MonoBehaviour
 		m_AgentSettings = FindObjectOfType<AgentSettings>();
 
 		// Initialise Team Manager
-		m_BlueAgentGroup = new SimpleMultiAgentGroup();
-		m_PurpleAgentGroup = new SimpleMultiAgentGroup();
+		//m_BlueAgentGroup = new SimpleMultiAgentGroup();
+		//m_PurpleAgentGroup = new SimpleMultiAgentGroup();
 		ballRb = ball.GetComponent<Rigidbody>();
+        
 		m_BallStartingPos = new Vector3(ball.transform.position.x, ball.transform.position.y, ball.transform.position.z);
 
 		foreach (var item in AgentsList)
 		{
 			item.StartingPosition = item.Agent.transform.position;
 			item.StratingRotation = item.Agent.transform.rotation;
-			item.Rb = item.Agent.GetComponent<Rigidbody>();
 
 			if (item.Agent.team == Team.Blue)
 			{
-				m_BlueAgentGroup.RegisterAgent(item.Agent);
+				//m_BlueAgentGroup.RegisterAgent(item.Agent);
 			}
 			else
 			{
-				m_PurpleAgentGroup.RegisterAgent(item.Agent);
+				//m_PurpleAgentGroup.RegisterAgent(item.Agent);
 			}
 		}
 		ResetScene();
@@ -71,8 +69,12 @@ public class AgentEnvController : MonoBehaviour
 		m_ResetTimer += 1;
         if (m_ResetTimer >= MaxEnvironmentSteps && MaxEnvironmentSteps > 0)
         {
-            m_BlueAgentGroup.GroupEpisodeInterrupted();
-            m_PurpleAgentGroup.GroupEpisodeInterrupted();
+            // m_BlueAgentGroup.GroupEpisodeInterrupted();
+            // m_PurpleAgentGroup.GroupEpisodeInterrupted();
+            foreach (var item in AgentsList)
+            {
+                item.Agent.EpisodeInterrupted();
+            }
             ResetScene();
         }
 	}
@@ -92,16 +94,28 @@ public class AgentEnvController : MonoBehaviour
     {
         if (scoredTeam == Team.Blue)
         {
-            m_BlueAgentGroup.AddGroupReward(1 - (float)m_ResetTimer / MaxEnvironmentSteps);
-            m_PurpleAgentGroup.AddGroupReward(-1);
+            // Attacker Reward
+
+            foreach (var item in AgentsList)
+            {
+                if (item.Agent.team == Team.Blue)
+                {
+                    item.Agent.AddReward(1 - (float)m_ResetTimer / MaxEnvironmentSteps);
+                }
+                else
+                {
+                    item.Agent.AddReward(-1);
+                }
+            }
+            //m_BlueAgentGroup.AddGroupReward(1 - (float)m_ResetTimer / MaxEnvironmentSteps);
+            //m_PurpleAgentGroup.AddGroupReward(-1);
+
+            foreach (var item in AgentsList)
+            {
+                item.Agent.EndEpisode();
+            }
         }
-        else
-        {
-            m_PurpleAgentGroup.AddGroupReward(1 - (float)m_ResetTimer / MaxEnvironmentSteps);
-            m_BlueAgentGroup.AddGroupReward(-1);
-        }
-        m_PurpleAgentGroup.EndGroupEpisode();
-        m_BlueAgentGroup.EndGroupEpisode();
+
         ResetScene();
     }
 
@@ -116,10 +130,6 @@ public class AgentEnvController : MonoBehaviour
             var newStartPos = item.Agent.initialPosition + new Vector3(0f, 0f, randomPosX);
             var rot = item.Agent.rotationSign * Random.Range(80.0f, 100.0f);
             var newRot = Quaternion.Euler(0, rot, 0);
-            item.Agent.transform.SetPositionAndRotation(newStartPos, newRot);
-
-            item.Rb.velocity = Vector3.zero;
-            item.Rb.angularVelocity = Vector3.zero;
         }
 
         //Reset Ball

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GridMat
+  m_Name: GridMat 1
   m_Shader: {fileID: 4800000, guid: bbecf177c38d84ff08d7c683c116affd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -70,9 +70,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _GridSize: 30
+    - _GridSize: 16
     - _LineOffset: 0.5
-    - _LineSize: 0.036
+    - _LineSize: 0.018
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

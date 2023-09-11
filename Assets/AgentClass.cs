@@ -19,13 +19,14 @@ public class AgentClass : Agent
 {
     public enum Position
     {
-        Generic
+        Attacker,
+        Defender
     }
 
 
     [HideInInspector]
     public Team team;
-    float m_BallTouched;
+    float m_BallTouched = 1f;
     public Position position;
 
     float m_Existential;
@@ -51,10 +52,14 @@ public class AgentClass : Agent
     public Transform arml;
     public Transform armr;
 
+    public Transform ball;
+
     public override void Initialize()
     {
         // (?)
-        AgentEnvController envController = GetComponent<AgentEnvController>();
+        AgentEnvController envController = GetComponentInParent<AgentEnvController>();
+        m_OrientationCube = GetComponentInChildren<OrientationCubeController>();
+
         if (envController != null)
         {
             m_Existential = 1f / envController.MaxEnvironmentSteps;
@@ -79,15 +84,20 @@ public class AgentClass : Agent
             rotationSign = -1f;
         }
 
-        if (position == Position.Generic)
+        if (position == Position.Attacker)
         {
-            Debug.Log("Generic Agent");
+            // Debug.Log("Set to Attacker");
+        }
+        if (position == Position.Defender)
+        {
+            // Debug.Log("Set to Defender");
         }
 
         m_AgentSettings = FindObjectOfType<AgentSettings>();
-        agentRb = GetComponent<Rigidbody>();
 
         m_ResetParameters = Academy.Instance.EnvironmentParameters;
+
+        SetupAgent();
     }
 
     public void SetupAgent()
@@ -124,7 +134,6 @@ public class AgentClass : Agent
         // Avg. Velocity of Agent
         // Avg. Body velocity compared to the cube
         // Distance from Ball
-
         foreach (var bodyPart in m_JdController.bodyPartsList)
         {
             CollectObservationBodyPart(bodyPart, sensor);
@@ -148,15 +157,28 @@ public class AgentClass : Agent
 
     private void FixedUpdate()
     {
+        UpdateOrientationObjects();
         // Calculate Rewards
+   
+        // Add Existential Reward
+        if (position == Position.Attacker)
+        {
+            AddReward(-m_Existential);
+            
+        }
+        if (position == Position.Defender)
+        {
+            AddReward(m_Existential);
+            
+        }
     }
 
     private void OnCollisionEnter(Collision c)
     {
         if (c.gameObject.CompareTag("ball"))
         {
-            // Add a reward
-
+            // Add a reward when agent touches ball
+            // AddReward(m_BallTouched);
         }
     }
 
@@ -172,21 +194,9 @@ public class AgentClass : Agent
         }
     }
 
-    Vector3 GetAvgVelocity()
+    void UpdateOrientationObjects()
     {
-        Vector3 velSum = Vector3.zero;
-        Vector3 avgVel;
-
-        //ALL RBS
-        int numOfRb = 0;
-        foreach (var item in m_JdController.bodyPartsList)
-        {
-            numOfRb++;
-            velSum += item.rb.velocity;
-        }
-
-        avgVel = velSum / numOfRb;
-        return avgVel;
+        m_OrientationCube.UpdateOrientation(body, ball);
     }
 
 
