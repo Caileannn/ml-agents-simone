@@ -11,6 +11,8 @@ TagManager:
   - ball
   - purpleAgent
   - blueAgent
+  - barrier
+  - obst
   layers:
   - Default
   - TransparentFX
