@@ -8,6 +8,11 @@ TagManager:
   - wall
   - agent
   - target
+  - ball
+  - purpleAgent
+  - blueAgent
+  - barrier
+  - obst
   layers:
   - Default
   - TransparentFX

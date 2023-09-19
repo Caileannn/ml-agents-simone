@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Chair/Chair_Collision.unity
+    guid: 786d6c4f0e67b104c848923191fcbb87
   m_configObjects: {}
