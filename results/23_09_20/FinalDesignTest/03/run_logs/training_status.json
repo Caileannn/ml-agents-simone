@@ -1,0 +1,191 @@
+{
+    "ChairWalker": {
+        "checkpoints": [
+            {
+                "steps": 499997,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-499997.onnx",
+                "reward": 0.3783801568131293,
+                "creation_time": 1695223521.7851028,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-499997.pt"
+                ]
+            },
+            {
+                "steps": 999970,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-999970.onnx",
+                "reward": 3.612659309635457,
+                "creation_time": 1695223679.0815032,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-999970.pt"
+                ]
+            },
+            {
+                "steps": 1499819,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-1499819.onnx",
+                "reward": 4.677707137052829,
+                "creation_time": 1695223828.8641782,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-1499819.pt"
+                ]
+            },
+            {
+                "steps": 1979167,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-1979167.onnx",
+                "reward": null,
+                "creation_time": 1695223970.655593,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-1979167.pt"
+                ]
+            },
+            {
+                "steps": 1999863,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-1999863.onnx",
+                "reward": 8.865411390751106,
+                "creation_time": 1695224906.9347792,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-1999863.pt"
+                ]
+            },
+            {
+                "steps": 2499553,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-2499553.onnx",
+                "reward": 28.389998281640665,
+                "creation_time": 1695225060.2944076,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-2499553.pt"
+                ]
+            },
+            {
+                "steps": 2999753,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-2999753.onnx",
+                "reward": 42.134220505461975,
+                "creation_time": 1695225210.8485236,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-2999753.pt"
+                ]
+            },
+            {
+                "steps": 3499853,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-3499853.onnx",
+                "reward": 83.9449673563242,
+                "creation_time": 1695225365.221786,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-3499853.pt"
+                ]
+            },
+            {
+                "steps": 3999935,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-3999935.onnx",
+                "reward": 105.34475957817502,
+                "creation_time": 1695225516.8165557,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-3999935.pt"
+                ]
+            },
+            {
+                "steps": 4499820,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-4499820.onnx",
+                "reward": 153.57905722379684,
+                "creation_time": 1695225672.6549003,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-4499820.pt"
+                ]
+            },
+            {
+                "steps": 4999618,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-4999618.onnx",
+                "reward": 109.58215581539065,
+                "creation_time": 1695225821.9048643,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-4999618.pt"
+                ]
+            },
+            {
+                "steps": 5499675,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-5499675.onnx",
+                "reward": 250.95569276228184,
+                "creation_time": 1695225971.6714163,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-5499675.pt"
+                ]
+            },
+            {
+                "steps": 5999425,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-5999425.onnx",
+                "reward": null,
+                "creation_time": 1695226124.5663114,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-5999425.pt"
+                ]
+            },
+            {
+                "steps": 6499255,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-6499255.onnx",
+                "reward": 352.39471435546875,
+                "creation_time": 1695226275.8404918,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-6499255.pt"
+                ]
+            },
+            {
+                "steps": 6999540,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-6999540.onnx",
+                "reward": 59.28809109926224,
+                "creation_time": 1695226423.6579912,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-6999540.pt"
+                ]
+            },
+            {
+                "steps": 7499871,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-7499871.onnx",
+                "reward": 380.12076873779296,
+                "creation_time": 1695226573.6828568,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-7499871.pt"
+                ]
+            },
+            {
+                "steps": 7999690,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-7999690.onnx",
+                "reward": 253.75992459654807,
+                "creation_time": 1695226725.6049263,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-7999690.pt"
+                ]
+            },
+            {
+                "steps": 8499159,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-8499159.onnx",
+                "reward": 339.27588272094727,
+                "creation_time": 1695226875.6565676,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-8499159.pt"
+                ]
+            },
+            {
+                "steps": 8795654,
+                "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-8795654.onnx",
+                "reward": 392.66749092936516,
+                "creation_time": 1695226967.106776,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-8795654.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 8795654,
+            "file_path": "results\\23_09_20/FinalDesignTest/03\\ChairWalker.onnx",
+            "reward": 392.66749092936516,
+            "creation_time": 1695226967.106776,
+            "auxillary_file_paths": [
+                "results\\23_09_20/FinalDesignTest/03\\ChairWalker\\ChairWalker-8795654.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

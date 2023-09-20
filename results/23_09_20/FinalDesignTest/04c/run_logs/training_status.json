@@ -1,0 +1,38 @@
+{
+    "ChairWalker": {
+        "checkpoints": [
+            {
+                "steps": 499999,
+                "file_path": "results\\23_09_20/FinalDesignTest/04c\\ChairWalker\\ChairWalker-499999.onnx",
+                "reward": -0.9641109046068449,
+                "creation_time": 1695224350.8093407,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/04c\\ChairWalker\\ChairWalker-499999.pt"
+                ]
+            },
+            {
+                "steps": 605424,
+                "file_path": "results\\23_09_20/FinalDesignTest/04c\\ChairWalker\\ChairWalker-605424.onnx",
+                "reward": -0.9738702025509954,
+                "creation_time": 1695224473.7147717,
+                "auxillary_file_paths": [
+                    "results\\23_09_20/FinalDesignTest/04c\\ChairWalker\\ChairWalker-605424.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 605424,
+            "file_path": "results\\23_09_20/FinalDesignTest/04c\\ChairWalker.onnx",
+            "reward": -0.9738702025509954,
+            "creation_time": 1695224473.7147717,
+            "auxillary_file_paths": [
+                "results\\23_09_20/FinalDesignTest/04c\\ChairWalker\\ChairWalker-605424.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

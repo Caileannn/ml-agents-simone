@@ -1,0 +1,22 @@
+Mono path[0] = 'C:/Users/caile/Desktop/23_09-ML_Agents/exe/23_09_20/FinalRay/MLAgents_Simone_Data/Managed'
+Mono config path = 'C:/Users/caile/Desktop/23_09-ML_Agents/exe/23_09_20/FinalRay/MonoBleedingEdge/etc'
+Initialize engine version: 2022.3.5f1 (9674261d40ee)
+[Subsystems] Discovering subsystems at path C:/Users/caile/Desktop/23_09-ML_Agents/exe/23_09_20/FinalRay/MLAgents_Simone_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1; jobified=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3090 (ID=0x2204)
+    Vendor:   NVIDIA
+    VRAM:     24340 MB
+    Driver:   31.0.15.3114
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.550 seconds
+- Finished resetting the current domain, in  0.001 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.970000 ms
+Registered Communicator in Agent.
+Target_Cube Fell Off Platform
+Target_Cube Fell Off Platform
+Target_Cube Fell Off Platform

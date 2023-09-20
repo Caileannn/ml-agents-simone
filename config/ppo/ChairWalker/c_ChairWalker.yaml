@@ -19,13 +19,6 @@ behaviors:
       extrinsic:
         gamma: 0.995
         strength: 1.0
-      curiosity:
-        gamma: 0.99
-        strength: 0.01
-        network_settings:
-          hidden_units: 64
-          num_layers: 3
-        learning_rate: 0.0001
     keep_checkpoints: 20
     max_steps: 80000000
     time_horizon: 1000
