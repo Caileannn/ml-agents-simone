@@ -192,12 +192,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "org.mujoco": {
-      "version": "file:C:/Users/caile/mujoco/unity",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
