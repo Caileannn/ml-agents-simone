@@ -13,6 +13,7 @@ TagManager:
   - blueAgent
   - barrier
   - obst
+  - stairs
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ namespace Unity.MLAgentsExamples
     /// Add this script to the target you want the agent to touch.
     /// Callbacks will be triggered any time the target is touched with a collider tagged as 'tagToDetect'
     /// </summary>
-    public class TargetControllerWalker : MonoBehaviour
+    public class TargetControllerWalkerBalance : MonoBehaviour
     {
 
 
@@ -86,11 +86,20 @@ namespace Unity.MLAgentsExamples
         /// </summary>
         public void MoveTargetToRandomPosition()
         {
-            var newTargetPos = m_startingPos + (Random.insideUnitSphere * spawnRadius);
-            newTargetPos.y = m_startingPos.y;
-            transform.position = newTargetPos;
+            bool check_position = false;
+            Vector3 newTargetPos = Vector3.zero;
 
-            // Check for collision with walls
+            while(!check_position)
+            {
+                newTargetPos = m_startingPos + (Random.insideUnitSphere * spawnRadius);
+                newTargetPos.y = m_startingPos.y;
+                if (!Physics.CheckBox(newTargetPos, transform.localScale / 2f, Quaternion.identity))
+                {
+                    check_position = true;
+                }
+            }
+            
+            transform.position = newTargetPos;
         }
 
         private void OnCollisionEnter(Collision col)
