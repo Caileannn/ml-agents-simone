@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Old/Scenes/Chair/Chair_Collision.unity
-    guid: 786d6c4f0e67b104c848923191fcbb87
+    path: Assets/New/Walker/Walker.unity
+    guid: f099dc2a9f5b0504889c62ab13c4d30f
   m_configObjects: {}
