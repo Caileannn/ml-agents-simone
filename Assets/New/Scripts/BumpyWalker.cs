@@ -5,10 +5,9 @@ using Unity.MLAgents.Sensors;
 using Unity.MLAgents;
 using BodyPart = Unity.MLAgentsExamples.BodyPart;
 using Random = UnityEngine.Random;
-using static UnityEngine.GraphicsBuffer;
 //using System.Diagnostics;
 
-public class Walker : Agent
+public class BumpyWalker : Agent
 {
     // Walking Speed
     [Header("Walk Speed")]
@@ -31,17 +30,6 @@ public class Walker : Agent
 
     public bool earlyTraining;
 
-    // Randomise Joint Forces
-    [Header("Walker Joint Forces")]
-    public bool rJointForcesEachEpisode;
-
-    // Randomise Joint Forces
-    [Header("Getup Training")]
-    public bool getUpTraining;
-
-    [Header("Balance Training")]
-    public bool balanceTraining;
-
     // The direction the Agent will walk towards during training
     private Vector3 m_WorldDirectionToWalk = Vector3.right;
 
@@ -54,6 +42,9 @@ public class Walker : Agent
     OrientationCubeController m_OrientationCube;
 
     LockOrientation m_Raycast;
+
+    // Terrain
+    public Terrain m_Ground;
 
 
 
@@ -117,13 +108,6 @@ public class Walker : Agent
      */
     public override void OnEpisodeBegin()
     {
-        if (rJointForcesEachEpisode)
-        {
-            // Apply Random Forces
-            m_JointDriveController.jointDampen = Random.Range(2500, 7500);
-            m_JointDriveController.maxJointSpring = Random.Range(20000, 60000);
-            m_JointDriveController.maxJointForceLimit = Random.Range(10000, 30000);
-        }
 
         foreach (var bodyPart in m_JointDriveController.bodyPartsDict.Values)
         {
@@ -131,16 +115,13 @@ public class Walker : Agent
         }
 
         // Apply Random Rotation to Seat
-        if (getUpTraining) { seat.rotation = Quaternion.Euler(Random.Range(0.0f, 360f), Random.Range(0.0f, 360f), Random.Range(0.0f, 360f)); }
-        else { seat.rotation = Quaternion.Euler(0f, Random.Range(0.0f, 360f), 0f);  }
-        
+        seat.rotation = Quaternion.Euler(0f, Random.Range(0.0f, 360f), 0f);
+
         UpdateOrientationObject();
 
         // Set our Walking Speed goal
         MTargetWalkingSpeed =
             rWalkSpeedEachEpisode ? Random.Range(0.1f, m_MaxWalkingSpeed) : MTargetWalkingSpeed;
-
-        
     }
     
     /* Add relevant information for each body part (observations)
@@ -165,7 +146,7 @@ public class Walker : Agent
         }
     }
 
-    /* Main method to Collect Observations about environemt
+    /* Main method to Collect Observations about environment
      */
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -272,25 +253,8 @@ public class Walker : Agent
            matchSpeedReward = Vector3.Dot(GetAvgVelocity(), cubeForward);
            if (matchSpeedReward > 0) matchSpeedReward = GetMatchingVelocityReward(cubeForward * MTargetWalkingSpeed, GetAvgVelocity());
         }
-        
-        if (getUpTraining)
-        {
-            // Its Orientation Along Z-Axis, as it gets more upright, its gets closer to 1, else closer to 0
-            // Distance from the seat to the ground, the same applies, higher = 1, lower = 0
-            var zAngle = DeltaAngle(seat.eulerAngles.z);
-            var xAngle = DeltaAngle(seat.eulerAngles.x);
-            var distanceFromGround = DistanceFromGround();
-            AddReward(zAngle * distanceFromGround * xAngle);
-        } else if(balanceTraining)
-        {
-            var zAngle = DeltaAngle(seat.eulerAngles.z);
-            var xAngle = DeltaAngle(seat.eulerAngles.x);
-            AddReward(matchSpeedReward * lookAtTargetReward * (zAngle * xAngle));
-        }
-        else
-        {
-           AddReward(matchSpeedReward * lookAtTargetReward);
-        }
+    
+        AddReward(matchSpeedReward * lookAtTargetReward);
     }
 
     
@@ -314,20 +278,5 @@ public class Walker : Agent
     {
         var velDeltaMag = Mathf.Clamp(Vector3.Distance(currentVel, velGoal), 0, MTargetWalkingSpeed);
         return Mathf.Pow(1 - Mathf.Pow(velDeltaMag / MTargetWalkingSpeed, 2), 2);
-    }
-
-    float DeltaAngle(float angle)
-    {
-        var currentZRot = angle;
-        float zRotDist = Mathf.Abs(Mathf.DeltaAngle(0f, currentZRot));
-        float normalizedDistance = 1f - Mathf.InverseLerp(0f, 180f, zRotDist);
-        float expZDist = Mathf.Pow(normalizedDistance, 2);
-        return expZDist;
-    }
-
-    float DistanceFromGround()
-    {
-        float normalizedValue = Mathf.Clamp01( seat.position.y / 3.0f);
-        return Mathf.Pow(normalizedValue, 2);
     }
 }
