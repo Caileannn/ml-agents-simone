@@ -90,7 +90,7 @@ public class Walker : Agent
     {
         m_OrientationCube = GetComponentInChildren<OrientationCubeController>();
         m_JointDriveController = GetComponent<JointDriveController>();
-        m_Raycast = GetComponentInChildren<LockOrientation>();
+        // m_Raycast = GetComponentInChildren<LockOrientation>();
        
         // Setup each Body Part
         m_JointDriveController.SetupBodyPart(seat);
@@ -247,7 +247,7 @@ public class Walker : Agent
     {
         m_WorldDirectionToWalk = target.position - seat.position;
         m_OrientationCube.UpdateOrientation(seat, target);
-        m_Raycast.UpdateRotation(seat);
+        // m_Raycast.UpdateRotation(seat);
     }
 
     void FixedUpdate()

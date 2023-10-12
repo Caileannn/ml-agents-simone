@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/New/Balance_Walker/Balance.unity
+    path: Assets/release/Scenes/Balance/Balance.unity
     guid: 046e56e125c3957498c0e215ca9d0a57
   m_configObjects: {}

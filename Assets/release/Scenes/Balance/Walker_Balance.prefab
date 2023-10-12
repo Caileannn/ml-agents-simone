@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -1741,7 +1741,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176810791690977573}
-  - component: {fileID: 825590911346136881}
   - component: {fileID: 4924641395177956605}
   m_Layer: 0
   m_Name: Raycast
@@ -1759,26 +1758,12 @@ Transform:
   m_GameObject: {fileID: 5303318861142065255}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.28655005, y: 3.7200003, z: 1.894331}
+  m_LocalPosition: {x: 0, y: 0, z: 1.894331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2722580235232797026}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &825590911346136881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5303318861142065255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b328bb2bb4d1bf40964833763eb7937, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  y_offset: -12
-  z_offset: 2
 --- !u!114 &4924641395177956605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,7 +1792,7 @@ MonoBehaviour:
   m_AlternatingRayOrder: 1
   rayHitColor: {r: 0, g: 1, b: 0.16458869, a: 1}
   rayMissColor: {r: 0.11090793, g: 0.13207549, b: 0.110270575, a: 1}
-  m_StartVerticalOffset: 0
+  m_StartVerticalOffset: 4.4
   m_EndVerticalOffset: -1.91
 --- !u!1 &5771439526206961800
 GameObject:
@@ -2590,6 +2575,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1091865374527005730}
   - {fileID: 9148272401270991874}
   - {fileID: 5933237340993409448}
   - {fileID: 3021034958260945020}
@@ -2658,7 +2644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2866,6 +2852,111 @@ MonoBehaviour:
   groundContactPenalty: 0
   touchingGround: 0
   touchingObst: 0
+--- !u!1 &7463391020628981378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1091865374527005730}
+  - component: {fileID: 6118719758348505912}
+  - component: {fileID: 1620781070997080415}
+  m_Layer: 0
+  m_Name: DepthCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1091865374527005730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463391020628981378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.011401565, y: -0.0000016941791, z: -0.000000062008674, w: 0.99993503}
+  m_LocalPosition: {x: -0, y: 1.5312346, z: 1.2420514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5732046185206465305}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &6118719758348505912
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463391020628981378}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 3
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.01
+  far clip plane: 300
+  field of view: 99.5
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 1
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &1620781070997080415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463391020628981378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a818409334800a4aaef031a0616d586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: DepthSensor
+  m_Compression: 1
+  m_FilterMode: 0
+  m_Grayscale: 1
+  m_Exponent: 1
+  m_ObservationStacks: 1
+  m_Width: 64
+  m_Height: 64
+  m_Material: {fileID: 2100000, guid: 8c3e1e7ccbd94f147873275aa6dddb8f, type: 2}
 --- !u!1 &7470254353610657185
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,7 +3158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
