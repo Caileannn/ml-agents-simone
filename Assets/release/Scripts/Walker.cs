@@ -6,6 +6,7 @@ using Unity.MLAgents;
 using BodyPart = Unity.MLAgentsExamples.BodyPart;
 using Random = UnityEngine.Random;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UI;
 //using System.Diagnostics;
 
 public class Walker : Agent
@@ -15,6 +16,17 @@ public class Walker : Agent
     [Range(0.1f, 10)]
     [SerializeField]
     private float m_TargetWalkingSpeed = 10;
+
+    [Header("Joint Controls")]
+    [Range(20000f, 60000f)]
+    [SerializeField]
+    private float m_Spring = 40000f;
+    [Range(2500f, 7500f)]
+    [SerializeField]
+    private float m_Dampen = 5000f;
+    [Range(10000f, 30000f)]
+    [SerializeField]
+    private float m_Force = 20000f;
 
     // Property
     public float MTargetWalkingSpeed
@@ -117,12 +129,13 @@ public class Walker : Agent
      */
     public override void OnEpisodeBegin()
     {
+        // Set values of Joint Controller for exploring emrgent behvaiours
+        SetJointForces();
+
         if (rJointForcesEachEpisode)
         {
             // Apply Random Forces
-            m_JointDriveController.jointDampen = Random.Range(2500, 7500);
-            m_JointDriveController.maxJointSpring = Random.Range(20000, 60000);
-            m_JointDriveController.maxJointForceLimit = Random.Range(10000, 30000);
+            RandomJointForces();
         }
 
         foreach (var bodyPart in m_JointDriveController.bodyPartsDict.Values)
@@ -202,8 +215,8 @@ public class Walker : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> continuousActionsOut = actionsOut.ContinuousActions;
-        continuousActionsOut[2] = Input.GetAxis("Horizontal");
-        continuousActionsOut[3] = Input.GetAxis("Vertical");
+        //continuousActionsOut[2] = Input.GetAxis("Horizontal");
+        //continuousActionsOut[3] = Input.GetAxis("Vertical");
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -252,6 +265,7 @@ public class Walker : Agent
 
     void FixedUpdate()
     {
+        SetJointForces();
         UpdateOrientationObject();
 
         var cubeForward = m_OrientationCube.transform.forward;
@@ -329,5 +343,32 @@ public class Walker : Agent
     {
         float normalizedValue = Mathf.Clamp01( seat.position.y / 3.0f);
         return Mathf.Pow(normalizedValue, 2);
+    }
+
+    void SetJointForces()
+    {
+        m_JointDriveController.maxJointSpring = m_Spring;
+        m_JointDriveController.jointDampen = m_Dampen;
+        m_JointDriveController.maxJointForceLimit = m_Force;
+
+        try
+        {
+            var t_Force = GameObject.Find("t_Force").GetComponent<Text>();
+            t_Force.text = m_Force.ToString();
+            var t_Spring = GameObject.Find("t_Spring").GetComponent<Text>();
+            t_Spring.text = m_Spring.ToString();
+            var t_Dampen = GameObject.Find("t_Dampen").GetComponent<Text>();
+            t_Dampen.text = m_Dampen.ToString();
+        } catch
+        {
+            Debug.Log("Text UI cannot be found.");
+        }
+    }
+
+    void RandomJointForces()
+    {
+        m_JointDriveController.jointDampen = Random.Range(2500, 7500);
+        m_JointDriveController.maxJointSpring = Random.Range(20000, 60000);
+        m_JointDriveController.maxJointForceLimit = Random.Range(10000, 30000);
     }
 }

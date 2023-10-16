@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2538,7 +2538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2644,7 +2644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2956,7 +2956,7 @@ MonoBehaviour:
   m_ObservationStacks: 1
   m_Width: 64
   m_Height: 64
-  m_Material: {fileID: 2100000, guid: 8c3e1e7ccbd94f147873275aa6dddb8f, type: 2}
+  m_Material: {fileID: 0}
 --- !u!1 &7470254353610657185
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,7 +3158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
