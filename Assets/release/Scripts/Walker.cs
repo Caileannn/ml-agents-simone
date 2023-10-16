@@ -294,12 +294,14 @@ public class Walker : Agent
             var zAngle = DeltaAngle(seat.eulerAngles.z);
             var xAngle = DeltaAngle(seat.eulerAngles.x);
             var distanceFromGround = DistanceFromGround();
-            AddReward(zAngle * distanceFromGround * xAngle);
+            AddReward(zAngle * xAngle);
+           
         } else if(balanceTraining)
         {
             var zAngle = DeltaAngle(seat.eulerAngles.z);
             var xAngle = DeltaAngle(seat.eulerAngles.x);
             AddReward(matchSpeedReward * lookAtTargetReward * (zAngle * xAngle));
+            
         }
         else
         {
@@ -341,7 +343,9 @@ public class Walker : Agent
 
     float DistanceFromGround()
     {
-        float normalizedValue = Mathf.Clamp01( seat.position.y / 3.0f);
+        float normalizedValue = Mathf.Clamp01( (seat.position.y) / 3.0f);
+        Debug.Log(seat.position.y/3.0f);
+        // Debug.Log(normalizedValue);
         return Mathf.Pow(normalizedValue, 2);
     }
 

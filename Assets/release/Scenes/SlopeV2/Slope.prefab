@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1251845219493326176}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.7, y: -13.27, z: 7.6}
+  m_LocalPosition: {x: -5.7, y: 1.8100001, z: 7.6}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -330,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8229667591705183747
 Transform:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 4121554987777392974}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -79.61629, y: -19.2, z: -64.619484}
+  m_LocalPosition: {x: -79.61629, y: -4.1200004, z: -64.619484}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -372,7 +372,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 36c7baa347d68f347a9aa9698aa1bcdd, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -745,7 +745,7 @@ Transform:
   m_GameObject: {fileID: 7543235902710078515}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 15.080001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -773,7 +773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2174235578674239238
 Transform:
   m_ObjectHideFlags: 0
@@ -783,7 +783,7 @@ Transform:
   m_GameObject: {fileID: 8115303371032612259}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.1, y: -14.88, z: 9.8}
+  m_LocalPosition: {x: -4.1, y: 0.2, z: 9.8}
   m_LocalScale: {x: 1, y: 150.00003, z: 150}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -870,15 +870,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2722580235232797026, guid: 24c387425908c084d9a6bb2a6e55c5f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.53
+      value: -5.55
       objectReference: {fileID: 0}
     - target: {fileID: 2722580235232797026, guid: 24c387425908c084d9a6bb2a6e55c5f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.28
+      value: -3.11
       objectReference: {fileID: 0}
     - target: {fileID: 2722580235232797026, guid: 24c387425908c084d9a6bb2a6e55c5f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40.92
+      value: -3.64
       objectReference: {fileID: 0}
     - target: {fileID: 2722580235232797026, guid: 24c387425908c084d9a6bb2a6e55c5f1, type: 3}
       propertyPath: m_LocalRotation.w

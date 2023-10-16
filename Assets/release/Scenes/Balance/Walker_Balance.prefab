@@ -1757,12 +1757,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5303318861142065255}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.894331}
+  m_LocalRotation: {x: 0.011401565, y: -0.0000016941791, z: -0.000000062008674, w: 0.99993503}
+  m_LocalPosition: {x: -0, y: -2.5504177, z: 2.5836656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2722580235232797026}
+  m_Father: {fileID: 5732046185206465305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4924641395177956605
 MonoBehaviour:
@@ -2033,7 +2033,6 @@ Transform:
   - {fileID: 5732046185206465305}
   - {fileID: 3760912995002528423}
   - {fileID: 2606659236387519094}
-  - {fileID: 176810791690977573}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3382247266651750635
@@ -2084,6 +2083,9 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
   m_TargetWalkingSpeed: 10
+  m_Spring: 40000
+  m_Dampen: 5000
+  m_Force: 20000
   rWalkSpeedEachEpisode: 1
   earlyTraining: 0
   rJointForcesEachEpisode: 0
@@ -2575,6 +2577,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 176810791690977573}
   - {fileID: 1091865374527005730}
   - {fileID: 9148272401270991874}
   - {fileID: 5933237340993409448}
@@ -2869,7 +2872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1091865374527005730
 Transform:
   m_ObjectHideFlags: 0
@@ -2892,7 +2895,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7463391020628981378}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -2943,7 +2946,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7463391020628981378}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a818409334800a4aaef031a0616d586, type: 3}
   m_Name: 

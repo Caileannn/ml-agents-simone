@@ -1879,12 +1879,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5303318861142065255}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.894331}
+  m_LocalRotation: {x: 0.011401565, y: -0.0000016941791, z: -0.000000062008674, w: 0.99993503}
+  m_LocalPosition: {x: 0, y: -2.550418, z: 2.5836675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2722580235232797026}
+  m_Father: {fileID: 5732046185206465305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4924641395177956605
 MonoBehaviour:
@@ -2155,8 +2155,6 @@ Transform:
   - {fileID: 5732046185206465305}
   - {fileID: 3760912995002528423}
   - {fileID: 2606659236387519094}
-  - {fileID: 176810791690977573}
-  - {fileID: 1001622410276516463}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3382247266651750635
@@ -2181,7 +2179,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 5d76e6158e3c7434ab04830259e59359, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 65022b380aa8d344d86bb1d76e0f7781, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: c_Walker
@@ -2207,6 +2205,9 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
   m_TargetWalkingSpeed: 10
+  m_Spring: 40000
+  m_Dampen: 5000
+  m_Force: 20000
   rWalkSpeedEachEpisode: 1
   earlyTraining: 0
   rJointForcesEachEpisode: 1
@@ -2699,6 +2700,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1091865374527005730}
+  - {fileID: 176810791690977573}
+  - {fileID: 1001622410276516463}
   - {fileID: 9148272401270991874}
   - {fileID: 5933237340993409448}
   - {fileID: 3021034958260945020}
@@ -3514,13 +3517,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9014644733643707531}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.31, y: 3.79, z: -0.92}
+  m_LocalRotation: {x: 0.011401565, y: -0.0000016941791, z: -0.000000062008674, w: 0.99993503}
+  m_LocalPosition: {x: 0.31000063, y: 1.3027692, z: -0.14351252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7854905600813116902}
-  m_Father: {fileID: 2722580235232797026}
+  m_Father: {fileID: 5732046185206465305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1411562161425679555
 MonoBehaviour:

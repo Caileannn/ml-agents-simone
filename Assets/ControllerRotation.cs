@@ -18,6 +18,7 @@ public class ControllerRotation : MonoBehaviour
 
     void Update()
     {
+        zeroPosition = walker.position;
         Rotate();
     }
 
