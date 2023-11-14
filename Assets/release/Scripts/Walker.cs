@@ -265,7 +265,6 @@ public class Walker : Agent
 
     void FixedUpdate()
     {
-        SetJointForces();
         UpdateOrientationObject();
 
         var cubeForward = m_OrientationCube.transform.forward;
@@ -298,6 +297,7 @@ public class Walker : Agent
            
         } else if(balanceTraining)
         {
+            // Sets reward for the agent based on its stableness, while moving towards a target
             var zAngle = DeltaAngle(seat.eulerAngles.z);
             var xAngle = DeltaAngle(seat.eulerAngles.x);
             AddReward(matchSpeedReward * lookAtTargetReward * (zAngle * xAngle));
