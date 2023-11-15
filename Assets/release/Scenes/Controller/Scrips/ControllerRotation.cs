@@ -33,7 +33,7 @@ public class ControllerRotation : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow)) 
         {
-            Debug.Log("LArrow");
+            //Debug.Log("LArrow");
             Quaternion targetRotation = Quaternion.Euler(0, 1 * 90.0f, 0) * transform.rotation;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
@@ -41,14 +41,14 @@ public class ControllerRotation : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            Debug.Log("RArrow");
+            //Debug.Log("RArrow");
             Quaternion targetRotation = Quaternion.Euler(0, -1 * 90.0f, 0) * transform.rotation;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             // Do something
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            Debug.Log("UArrow");
+            //Debug.Log("UArrow");
             // Calculate the target position based on user input.
             Vector3 targetPosition = controller.position + (controller.forward * 10);
 
@@ -58,7 +58,7 @@ public class ControllerRotation : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            Debug.Log("DArrow");
+            //Debug.Log("DArrow");
             // Do something
         }
         else
