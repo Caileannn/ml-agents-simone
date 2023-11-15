@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/release/Scenes/SlopeV2/Slope.unity
+    path: Assets/release/Scenes/Slope/Slope.unity
     guid: 295588d0aa68fdd43ac403787f83c842
   m_configObjects: {}

@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class ControllerRotation : MonoBehaviour
 {
+    // Spatial data of the controller
     public Transform controller;
+    // Spatial data of the agent
     public Transform walker;
 
+    // 0, 0, 0 v3
     private Vector3 zeroPosition;
 
     float rotationSpeed = 2f;
     // Update is called once per frame
     void Start()
     {
-        zeroPosition = controller.position;
+        // Set position of controller to that of the agent.
+        zeroPosition = new Vector3(walker.position.x, 20f, walker.position.z);
+        controller.position = zeroPosition;
     }
 
     void Update()
     {
-        zeroPosition = walker.position;
+        // zeroPosition = walker.position;
+        //zeroPosition = new Vector3(walker.position.x, 20f, walker.position.z);
+        // controller.position = zeroPosition;
         Rotate();
     }
 
