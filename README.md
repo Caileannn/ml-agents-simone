@@ -16,7 +16,7 @@ __20.11 -> 25.11__
 - [x] Fix Controller to make it more intutative
 
 
-__Notes__
+## Notes ##
 
 You can aim projectiles by pressing ``f`` when the Cannon is enabled:
 
