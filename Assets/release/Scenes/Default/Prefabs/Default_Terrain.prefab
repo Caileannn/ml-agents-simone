@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688132802d6546041aea7c1df9d5073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useController: 1
+  useController: 0
   modelToChange: {fileID: 2461258972607306870}
   modelToUse: {fileID: -6446594586776062275, guid: 0c8f92e6c54a42b4d833d2ace7898bae, type: 3}
   yellow: {fileID: 2100000, guid: 40300f88299ebd94f943e2b83f8f681e, type: 2}
@@ -964,9 +964,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3382247266651750635, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5777259271730693716, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
       propertyPath: m_Name
       value: Default
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191786620621186661, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 5999710011797358021}
+    - target: {fileID: 6191786620621186661, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
+      propertyPath: getUpTraining
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191786620621186661, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
+      propertyPath: balanceTraining
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1043,13 +1059,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
+      propertyPath: mass
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
       propertyPath: rate
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
       propertyPath: seat
       value: 
       objectReference: {fileID: 8496239742828553787}
+    - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
+      propertyPath: size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
+      propertyPath: speed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
+      propertyPath: m_ContinousCannon
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
       propertyPath: m_EnableProjectile
       value: 0

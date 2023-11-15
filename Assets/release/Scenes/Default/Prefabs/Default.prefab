@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -2081,7 +2081,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 5000
+  MaxStep: 1000
   m_TargetWalkingSpeed: 10
   m_Spring: 40000
   m_Dampen: 5000

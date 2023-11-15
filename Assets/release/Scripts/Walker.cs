@@ -292,7 +292,7 @@ public class Walker : Agent
             // Distance from the seat to the ground, the same applies, higher = 1, lower = 0
             var zAngle = DeltaAngle(seat.eulerAngles.z);
             var xAngle = DeltaAngle(seat.eulerAngles.x);
-            var distanceFromGround = DistanceFromGround();
+            //var distanceFromGround = DistanceFromGround();
             AddReward(zAngle * xAngle);
            
         } else if(balanceTraining)
