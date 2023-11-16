@@ -1,4 +1,4 @@
-## To-do List for 'exp-simone' ##
+# To-do List for 'exp-simone' #
 
 __13.11 -> 17.11__
 
@@ -16,7 +16,7 @@ __20.11 -> 25.11__
 - [x] Fix Controller to make it more intutative
 
 
-## Notes ##
+# Notes #
 
 ## Projectiles ##
 
