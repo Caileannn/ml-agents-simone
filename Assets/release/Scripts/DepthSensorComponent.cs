@@ -188,13 +188,13 @@ using UnityEngine.UI;
             }
             m_Material.SetInt(s_ExponentID, m_Exponent);
 
-            // Optional UI view.
-            //RawImage ui = FindObjectOfType<RawImage>();
-            //if (ui != null)
-            //{
-            //    ui.texture = m_Texture;
-            //}
+        // Optional UI view.
+        RawImage ui = FindObjectOfType<RawImage>();
+        if (ui != null)
+        {
+            ui.texture = m_Texture;
         }
+    }
 
         /// <summary>
         /// Releases the RenderTexture.
