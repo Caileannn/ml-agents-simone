@@ -16,7 +16,7 @@ __20.11 -> 25.11__
 - [x] Fix Controller to make it more intutative
 
 
-# Notes #
+### Notes ###
 
 ## Projectiles ##
 
@@ -26,13 +26,13 @@ You can aim projectiles by pressing ``f`` when the Cannon is enabled:
 
 Continous Projectiles can be enabled which spawn at a ``rate``.
 
-### Location of Models ###
+## Location of Models ##
 
 All of the .ONNX models can be found under:
 
 ![image](https://github.com/Caileannn/ml-agents-simone/assets/25906839/7cd2c250-1ef6-4609-a973-ded4f3348961)
 
-### Terrain ###
+## Terrain ##
 
 The different types of terrains are stored under here:
 
@@ -40,13 +40,13 @@ The different types of terrains are stored under here:
 
 You can enable whichever one you prefer!
 
-### Agent setup for Inference ###
+## Agent setup for Inference ##
 
 When you wish to try out the trained model, you should switch the ``max steps`` under the Walker Component to zero:
 
 ![image](https://github.com/Caileannn/ml-agents-simone/assets/25906839/9106527b-1a0c-47a2-b7a3-55e59dd0c3c1)
 
-### Controller ###
+## Controller ##
 
 For the **Controller** you can use it by enabling it here:
 
@@ -56,7 +56,7 @@ Along with some extra settings for the Mesh & Material of the cursor.
 
 Use the Up arrow to move the controller forward and the Left & Right to rotate it around the axis of the Chair
 
-### Depth Camera ###
+## Depth Camera ##
 
 I have added a new Depth camera to the scene. By using a shader on a camera depth texture, you will be able to have a higher quality version of the agents input.
 This can be found under ```cameras/DepthCamera```. 
@@ -65,7 +65,7 @@ This can be found under ```cameras/DepthCamera```.
 
 You can also disable the smaller depth window by going to ```ui/RawImage``` and disabling that.
 
-### Model Swapping ###
+## Model Swapping ##
 
 I have added the ability to be able to swap models during runtime. You can do this by enabling the function ```Model Swap``` in the ```Walker``` script.
 
