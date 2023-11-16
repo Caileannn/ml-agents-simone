@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
@@ -2010,6 +2010,7 @@ GameObject:
   - component: {fileID: 6191786620621186661}
   - component: {fileID: 3396719268153385903}
   - component: {fileID: 4068785188318556655}
+  - component: {fileID: 8187530526923920244}
   m_Layer: 0
   m_Name: Default
   m_TagString: Untagged
@@ -2081,7 +2082,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
+  MaxStep: 5000
   m_TargetWalkingSpeed: 10
   m_Spring: 40000
   m_Dampen: 5000
@@ -2091,6 +2092,10 @@ MonoBehaviour:
   rJointForcesEachEpisode: 0
   getUpTraining: 0
   balanceTraining: 0
+  m_ModelSwap: 0
+  m_ProximitySwapper: 0
+  m_SwitchModelAfterFalling: 0
+  m_ModelSwapper: {fileID: 0}
   target: {fileID: 0}
   rest: {fileID: 9148272401270991874}
   seat: {fileID: 5732046185206465305}
@@ -2136,6 +2141,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
   TakeActionsBetweenDecisions: 0
+--- !u!114 &8187530526923920244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5777259271730693716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4f1f9b90b1b3949a25ccabbf8429d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InitialModel: {fileID: 5022602860645237092, guid: 6c625593ea946484995cf5e4ec762dc7, type: 3}
+  nnModelList: []
+  currentModel: 0
+  m_PastModel: 0
+  m_GetupModel: 4
 --- !u!1 &6163716254022380080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,7 +2562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2647,7 +2669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -3161,7 +3183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0

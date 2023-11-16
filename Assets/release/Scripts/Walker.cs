@@ -54,6 +54,18 @@ public class Walker : Agent
     [Header("Balance Training")]
     public bool balanceTraining;
 
+    [Header("Swap Model Settings")]
+    public bool m_ModelSwap = false;
+    public bool m_ProximitySwapper = false;
+    public bool m_SwitchModelAfterFalling = false;
+
+    [HideInInspector]
+    public bool m_FinishedSwap = false;
+
+
+    [HideInInspector]
+    public ModelSwap m_ModelSwapper;
+
     // The direction the Agent will walk towards during training
     private Vector3 m_WorldDirectionToWalk = Vector3.right;
 
@@ -102,8 +114,9 @@ public class Walker : Agent
     {
         m_OrientationCube = GetComponentInChildren<OrientationCubeController>();
         m_JointDriveController = GetComponent<JointDriveController>();
+        m_ModelSwapper = GetComponent<ModelSwap>();
         // m_Raycast = GetComponentInChildren<LockOrientation>();
-       
+
         // Setup each Body Part
         m_JointDriveController.SetupBodyPart(seat);
         m_JointDriveController.SetupBodyPart(rest);
@@ -153,6 +166,11 @@ public class Walker : Agent
         MTargetWalkingSpeed =
             rWalkSpeedEachEpisode ? Random.Range(0.1f, m_MaxWalkingSpeed) : MTargetWalkingSpeed;
 
+        // Check if model swapper is enabled, and set model if so
+        if (m_ModelSwap)
+        {
+            m_ModelSwapper.SwitchModel(3, this);
+        }
         
     }
     
@@ -265,6 +283,32 @@ public class Walker : Agent
 
     void FixedUpdate()
     {
+        // Check if model swapper is on
+        if (m_ModelSwap)
+        {
+            // Check if Swap Model on Fall is on
+            if (m_SwitchModelAfterFalling)
+            {
+                // If on, check its rotation, and if certain parts are touching the floor
+                var zAngle = DeltaAngle(seat.eulerAngles.z);
+                var xAngle = DeltaAngle(seat.eulerAngles.x);
+                //Debug.Log(zAngle + " " + xAngle);
+                if ((zAngle < 0.5 || xAngle < 0.5) && !m_FinishedSwap)
+                {
+                    // Swap Model
+                    m_FinishedSwap = true;
+                    m_ModelSwapper.SwitchModel(4, this);
+                }
+                else if(zAngle > 0.8 && xAngle > 0.8 && m_FinishedSwap)
+                {
+                    // Swap to Original Model
+                    m_FinishedSwap = false;
+                    m_ModelSwapper.SwitchModel(5, this);
+                }
+
+            }
+        }
+
         UpdateOrientationObject();
 
         var cubeForward = m_OrientationCube.transform.forward;
@@ -309,7 +353,21 @@ public class Walker : Agent
         }
     }
 
-    
+    // Use regular update to listen for keypresses
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            m_ModelSwapper.SwitchModel(0, this);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            m_ModelSwapper.SwitchModel(1, this);
+        }
+    }
+
+
 
     Vector3 GetAvgVelocity()
     {

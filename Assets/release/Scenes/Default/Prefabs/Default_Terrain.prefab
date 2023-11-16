@@ -977,8 +977,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5999710011797358021}
     - target: {fileID: 6191786620621186661, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
-      propertyPath: getUpTraining
+      propertyPath: m_ModelSwap
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191786620621186661, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
+      propertyPath: getUpTraining
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6191786620621186661, guid: 74c62eb715af3d74dba007968f9900de, type: 3}
       propertyPath: balanceTraining
@@ -1084,11 +1088,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
       propertyPath: m_EnableProjectile
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3800898565135324342, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
       propertyPath: m_TriggerProjectile
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4651140162168210234, guid: 34932b930dfa98b48bd6b8209a2dcd1a, type: 3}
       propertyPath: m_Name
