@@ -2095,6 +2095,7 @@ MonoBehaviour:
   m_ModelSwap: 0
   m_ProximitySwapper: 0
   m_SwitchModelAfterFalling: 0
+  m_FinishedSwap: 0
   m_ModelSwapper: {fileID: 0}
   target: {fileID: 0}
   rest: {fileID: 9148272401270991874}
@@ -2158,6 +2159,7 @@ MonoBehaviour:
   currentModel: 0
   m_PastModel: 0
   m_GetupModel: 4
+  m_WalkerModel: 4
 --- !u!1 &6163716254022380080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,6 +2581,7 @@ GameObject:
   - component: {fileID: 7445707003514573868}
   - component: {fileID: 9100050631348364745}
   - component: {fileID: 1550985650543268760}
+  - component: {fileID: 2576851963027223328}
   m_Layer: 0
   m_Name: Seat
   m_TagString: agent
@@ -2674,6 +2677,19 @@ MonoBehaviour:
   groundContactPenalty: -1
   touchingGround: 0
   touchingObst: 0
+--- !u!114 &2576851963027223328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6794064008694923825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c07b818612782c47bc265efc0b072dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BalanceSwap: swap_Balance
 --- !u!1 &7331846505223066426
 GameObject:
   m_ObjectHideFlags: 0

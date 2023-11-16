@@ -19,7 +19,6 @@ public class ModelSwap : MonoBehaviour
     [HideInInspector] public List<NNModel> nnModelList;
     [HideInInspector] public int currentModel = 0;
     [HideInInspector] public int m_PastModel = 0;
-    [HideInInspector] public int m_GetupModel = 4;
 
     // Path to .onnx files
     string m_relPath = string.Empty;
@@ -47,7 +46,6 @@ public class ModelSwap : MonoBehaviour
 
     public void ConvertNNModels(FileInfo[] nnList)
     {
-        int i = 0;
         foreach (FileInfo element in nnList) 
         {
             var converter = new ONNXModelConverter(true);
@@ -67,13 +65,6 @@ public class ModelSwap : MonoBehaviour
             result.name = element.Name;
             // Add Model to Model List
             nnModelList.Add(result);
-
-            if(result.name == "Getup.onnx")
-            {
-                m_GetupModel = i;
-            }
-
-            i++;
         }
 
         Debug.Log("Total Number of Models: " + nnModelList.Count);
@@ -84,7 +75,13 @@ public class ModelSwap : MonoBehaviour
 
     public void SwitchModel(int modelActive, Agent inst)
     {
-        // If left, move down in array
+        /*
+         0 = -1 on the model list
+         1 = +1 on the model list
+         3 = Starting model
+         4 = Return to last model active
+         */
+
         if (modelActive == 0)
         {
             currentModel -= 1;
@@ -96,12 +93,11 @@ public class ModelSwap : MonoBehaviour
             inst.SetModel("Swap", nnModelList[currentModel]);
             GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
         }
-        // Set original Model
+
         else if (modelActive == 3)
         {
             inst.SetModel("Swap", m_InitialModel);
         }
-        // If right, move up in array
         else if (modelActive == 1) 
         {
             currentModel += 1;
@@ -113,22 +109,35 @@ public class ModelSwap : MonoBehaviour
             inst.SetModel("Swap", nnModelList[currentModel]);
             GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
         }
-        // Swap model if falls over, and store past model number
-        else if (modelActive == 4) 
-        {
-            m_PastModel = currentModel;
-            currentModel = m_GetupModel;
-            inst.SetModel("Swap", nnModelList[currentModel]);
-            GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
-        }
-        // Swap model back to past when it stabalises
-        else if (modelActive == 5)
+        else if (modelActive == 4)
         {
             currentModel = m_PastModel;
             inst.SetModel("Swap", nnModelList[currentModel]);
             GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
         }
-
         Debug.Log("Current Model: " + GlobalVars.g_CurrentModel);
+    }
+
+    // Set Model by name
+    public void SwitchModel(string modelName, Agent inst)
+    {
+        m_PastModel = currentModel;
+        FindModelByName(modelName);
+        inst.SetModel("Swap", nnModelList[currentModel]);
+        GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
+        Debug.Log("Current Model: " + GlobalVars.g_CurrentModel);
+    }
+
+    private void FindModelByName(string modelName)
+    {
+        int i = 0;
+        foreach (NNModel element in nnModelList)
+        {
+            if(element.name.Equals(modelName+".onnx"))
+            {
+                currentModel = i;
+                return;
+            }
+        }
     }
 };

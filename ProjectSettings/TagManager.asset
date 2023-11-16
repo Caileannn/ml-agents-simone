@@ -13,6 +13,10 @@ TagManager:
   - blueAgent
   - barrier
   - obst
+  - swap_Balance
+  - swap_Getup
+  - swap_Sloper
+  - swap_Walker
   layers:
   - Default
   - TransparentFX

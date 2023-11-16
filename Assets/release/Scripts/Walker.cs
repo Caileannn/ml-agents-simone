@@ -297,13 +297,13 @@ public class Walker : Agent
                 {
                     // Swap Model
                     m_FinishedSwap = true;
-                    m_ModelSwapper.SwitchModel(4, this);
+                    m_ModelSwapper.SwitchModel("Getup", this);
                 }
                 else if(zAngle > 0.8 && xAngle > 0.8 && m_FinishedSwap)
                 {
                     // Swap to Original Model
                     m_FinishedSwap = false;
-                    m_ModelSwapper.SwitchModel(5, this);
+                    m_ModelSwapper.SwitchModel(4, this);
                 }
 
             }
