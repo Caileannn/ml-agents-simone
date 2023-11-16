@@ -18,7 +18,7 @@ __20.11 -> 25.11__
 
 ## Notes ##
 
-### Projectiles ###
+## Projectiles ##
 
 You can aim projectiles by pressing ``f`` when the Cannon is enabled:
 
