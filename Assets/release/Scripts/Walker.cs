@@ -7,6 +7,8 @@ using BodyPart = Unity.MLAgentsExamples.BodyPart;
 using Random = UnityEngine.Random;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UI;
+using Unity.VisualScripting;
+using System.Collections.Generic;
 //using System.Diagnostics;
 
 public class Walker : Agent
@@ -18,7 +20,7 @@ public class Walker : Agent
     private float m_TargetWalkingSpeed = 10;
 
     [Header("Joint Controls")]
-    [Range(20000f, 60000f)]
+    [Range(20000f, 140000f)]
     [SerializeField]
     private float m_Spring = 40000f;
     [Range(2500f, 7500f)]
@@ -47,6 +49,12 @@ public class Walker : Agent
     [Header("Walker Joint Forces")]
     public bool rJointForcesEachEpisode;
 
+    [Header("Randomise Y Rotation")]
+    public bool m_RandomiseYRotation = true;
+
+    [Header("Randomise XYZ Rotation")]
+    public bool m_RandomiseXYZRotation = false;
+
     // Randomise Joint Forces
     [Header("Getup Training")]
     public bool getUpTraining;
@@ -58,6 +66,18 @@ public class Walker : Agent
     public bool m_ModelSwap = false;
     public bool m_ProximitySwapper = false;
     public bool m_SwitchModelAfterFalling = false;
+
+    [Header("Scrambler Training")]
+    public bool m_ScramblerTraining = false;
+    public int m_StepCountAtLastMeter = 0;
+    public int m_LastXPosition = 0;
+    private Terrain m_Terrain;
+
+    [Header("Stairs Trainging")]
+    public bool m_StairsTraining = false;
+    private Transform m_Stairs;
+    private Vector3 m_StairBounds;
+
 
     [HideInInspector]
     public bool m_FinishedSwap = false;
@@ -115,6 +135,27 @@ public class Walker : Agent
         m_OrientationCube = GetComponentInChildren<OrientationCubeController>();
         m_JointDriveController = GetComponent<JointDriveController>();
         m_ModelSwapper = GetComponent<ModelSwap>();
+        var parent = gameObject.transform.parent;
+
+        try{
+            m_Terrain = parent.GetComponentInChildren<Terrain>();
+        }catch{
+            m_Terrain = null; 
+        }
+
+        if (m_StairsTraining)
+        {
+            // Fecth Object
+            m_Stairs = parent.Find("Stairs");
+            var stairList = parent.GetComponentsInChildren<Renderer>();
+            foreach (var stair in stairList)
+            {
+                m_StairBounds += stair.bounds.size;
+            }
+
+        }
+
+        
         // m_Raycast = GetComponentInChildren<LockOrientation>();
 
         // Setup each Body Part
@@ -143,7 +184,14 @@ public class Walker : Agent
     public override void OnEpisodeBegin()
     {
         // Set values of Joint Controller for exploring emrgent behvaiours
-        SetJointForces();
+        if (m_ScramblerTraining)
+        {
+            this.GetComponent<DMTerrain>().Reset();
+        }
+        
+        //SetJointForces();
+
+
 
         if (rJointForcesEachEpisode)
         {
@@ -157,8 +205,8 @@ public class Walker : Agent
         }
 
         // Apply Random Rotation to Seat
-        if (getUpTraining) { seat.rotation = Quaternion.Euler(Random.Range(0.0f, 360f), Random.Range(0.0f, 360f), Random.Range(0.0f, 360f)); }
-        else { seat.rotation = Quaternion.Euler(0f, Random.Range(0.0f, 360f), 0f);  }
+        if (getUpTraining) { if(m_RandomiseXYZRotation) seat.rotation = Quaternion.Euler(Random.Range(0.0f, 360f), Random.Range(0.0f, 360f), Random.Range(0.0f, 360f)); }
+        else { if (m_RandomiseYRotation) seat.rotation = Quaternion.Euler(0f, Random.Range(0.0f, 360f), 0f);  }
         
         UpdateOrientationObject();
 
@@ -171,6 +219,8 @@ public class Walker : Agent
         {
             m_ModelSwapper.SwitchModel(3, this);
         }
+
+        m_LastXPosition = (int)GetAverageXPositionFeet();
         
     }
     
@@ -180,6 +230,8 @@ public class Walker : Agent
     {
         // Check if touching Ground
         sensor.AddObservation(bp.groundContact.touchingGround);
+        // Check if touching Stairs (should remove for older models)
+        sensor.AddObservation(bp.groundContact.touchingStairs);
 
         // Get Velocities in Context of the Orientation Cube Space
         sensor.AddObservation(m_OrientationCube.transform.InverseTransformDirection(bp.rb.velocity));
@@ -283,6 +335,15 @@ public class Walker : Agent
 
     void FixedUpdate()
     {
+
+        if (m_ScramblerTraining)
+        {
+            if (seat.position.y < -15f)
+            {
+                SetReward(-1f);
+                EndEpisode();
+            }
+        }
         // Check if model swapper is on
         if (m_ModelSwap)
         {
@@ -347,10 +408,74 @@ public class Walker : Agent
             AddReward(matchSpeedReward * lookAtTargetReward * (zAngle * xAngle));
             
         }
+        else if(m_ScramblerTraining)
+        {
+            // Normalised Velocity in a certain direciton.
+            var seatVelocity = GetAvgVelocitySeat();
+            float normalisedVelcoity = Mathf.Clamp(GetNormalizedVelocity(seatVelocity).x, 0f, 1f);
+            AddReward(normalisedVelcoity);
+
+            // If it hasnt moved forward in a certain amount of steps, end the episode.
+            // (1) Get X Position of the Foot, or Avgerge of all Feet
+            float feetXPosition = GetAverageXPositionFeet();
+            int newXPosition = (int)feetXPosition;
+
+            // (2) Compare step count with highest X position
+            if (newXPosition > m_LastXPosition)
+            {
+                m_LastXPosition = newXPosition;
+                m_StepCountAtLastMeter = this.StepCount;
+            }
+
+            // If the agent goes 1000 steps w/o making any progress, we will end the episode.
+            if (this.StepCount - m_StepCountAtLastMeter >= (1000))
+            {
+                AddReward(-1f);
+                EndEpisode();
+            }
+        }
+        else if(m_StairsTraining){
+            // Define rewards for stairs 
+            // Normalised Velocity in a certain direciton.
+            var seatVelocity = GetAvgVelocitySeat();
+            float normalisedVelcoity = Mathf.Clamp(GetNormalizedVelocityStairs(seatVelocity).z, 0f, 1f);
+            AddReward(DistanceFromTarget(30f));
+         
+
+            // If it hasnt moved forward in a certain amount of steps, end the episode.
+            // (1) Get X Position of the Foot, or Avgerge of all Feet
+            float feetXPosition = GetAverageXPositionFeet();
+            int newXPosition = (int)feetXPosition + 37;
+
+            // (2) Compare step count with highest X position
+            if (newXPosition > m_LastXPosition)
+            {
+                m_LastXPosition = newXPosition;
+                m_StepCountAtLastMeter = this.StepCount;
+            }
+
+            // If the agent goes 1000 steps w/o making any progress, we will end the episode.
+            if (this.StepCount - m_StepCountAtLastMeter >= 1000)
+            {
+                AddReward(-0.002f);
+                //EndEpisode();
+            }
+
+            // If the agent goes 1000 steps w/o making any progress, we will end the episode.
+            
+
+
+            //Debug.Log( DistanceFromTarget(30f) * matchSpeedReward * lookAtTargetReward);
+
+
+        }
         else
         {
            AddReward(matchSpeedReward * lookAtTargetReward);
+           Debug.Log("look: " + lookAtTargetReward + " msp: " + matchSpeedReward);
+
         }
+
     }
 
     // Use regular update to listen for keypresses
@@ -367,6 +492,12 @@ public class Walker : Agent
         }
     }
 
+    float DistanceFromTarget(float maxDistance) 
+    {
+        float dist =  Vector3.Distance(seat.transform.position, target.transform.position);
+        float normalisedValue = 1- Mathf.InverseLerp(0f, maxDistance, dist);
+        return Mathf.Pow(normalisedValue, 2);
+    }
 
 
     Vector3 GetAvgVelocity()
@@ -382,6 +513,23 @@ public class Walker : Agent
 
         var avgVelocity = velSum / rbCount;
         return avgVelocity;
+    }
+
+    Vector3 GetAvgVelocitySeat()
+    {
+        Vector3 velSum = Vector3.zero;
+
+        
+        foreach (var item in m_JointDriveController.bodyPartsList)
+        {
+            if(item.rb.transform == seat)
+            {
+                velSum = item.rb.velocity;
+                break;
+            }
+        }
+
+        return velSum;
     }
 
     public float GetMatchingVelocityReward(Vector3 velGoal, Vector3 currentVel)
@@ -432,5 +580,55 @@ public class Walker : Agent
         m_JointDriveController.jointDampen = Random.Range(2500, 7500);
         m_JointDriveController.maxJointSpring = Random.Range(20000, 60000);
         m_JointDriveController.maxJointForceLimit = Random.Range(10000, 30000);
+    }
+
+    float GetAverageXPositionFeet()
+    {
+        float average = (FLF.position.z + FRF.position.z + BLF.position.z + BRF.position.z) / 4.0f;
+        return average;
+    }
+
+    Vector3 GetNormalizedVelocity(Vector3 metersPerSecond)
+    {
+        var maxMetersPerSecond = m_Terrain.terrainData.bounds.size
+            / this.MaxStep
+            / Time.fixedDeltaTime;
+
+        var maxXZ = Mathf.Max(maxMetersPerSecond.x, maxMetersPerSecond.z);
+        maxMetersPerSecond.x = maxXZ;
+        maxMetersPerSecond.z = maxXZ;
+        maxMetersPerSecond.y = 53; // override with
+        float x = metersPerSecond.x / maxMetersPerSecond.x;
+        float y = metersPerSecond.y / maxMetersPerSecond.y;
+        float z = metersPerSecond.z / maxMetersPerSecond.z;
+        // clamp result
+        x = Mathf.Clamp(x, -1f, 1f);
+        y = Mathf.Clamp(y, -1f, 1f);
+        z = Mathf.Clamp(z, -1f, 1f);
+        Vector3 normalizedVelocity = new Vector3(x, y, z);
+        return normalizedVelocity;
+    }
+
+    Vector3 GetNormalizedVelocityStairs(Vector3 metersPerSecond)
+    {
+
+        // Get Stairs Bound in Z-Direction
+        var maxMetersPerSecond = m_StairBounds
+            / this.MaxStep
+            / Time.fixedDeltaTime;
+
+        var maxXZ = Mathf.Max(maxMetersPerSecond.x, maxMetersPerSecond.z);
+        maxMetersPerSecond.x = maxXZ;
+        maxMetersPerSecond.z = maxXZ;
+        maxMetersPerSecond.y = 53; // override with
+        float x = metersPerSecond.x / maxMetersPerSecond.x;
+        float y = metersPerSecond.y / maxMetersPerSecond.y;
+        float z = metersPerSecond.z / maxMetersPerSecond.z;
+        // clamp result
+        x = Mathf.Clamp(x, -1f, 1f);
+        y = Mathf.Clamp(y, -1f, 1f);
+        z = Mathf.Clamp(z, -1f, 1f);
+        Vector3 normalizedVelocity = new Vector3(x, y, z);
+        return normalizedVelocity;
     }
 }

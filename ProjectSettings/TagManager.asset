@@ -17,6 +17,8 @@ TagManager:
   - swap_Getup
   - swap_Sloper
   - swap_Walker
+  - stairs
+  - ag
   layers:
   - Default
   - TransparentFX

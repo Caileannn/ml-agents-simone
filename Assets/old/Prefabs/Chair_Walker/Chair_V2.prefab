@@ -334,6 +334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688132802d6546041aea7c1df9d5073d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useController: 0
+  modelToChange: {fileID: 0}
+  modelToUse: {fileID: 0}
+  yellow: {fileID: 0}
   tagToDetect: agent
   spawnRadius: 25
   respawnIfTouched: 1
@@ -360,6 +364,11 @@ MonoBehaviour:
       m_Calls: []
   area: {fileID: 4090888821281405361}
   envController: {fileID: 0}
+  m_SwitchStairs: 1
+  m_InitialSpawn: 1
+  m_StartingStairPosition: {x: 0, y: 0, z: 0}
+  m_StairChildren: []
+  m_StairCollection: {fileID: 0}
 --- !u!54 &509452782147083476
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -592,7 +601,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &1661865769025206966
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +806,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &1906011938765224794
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1449,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &3938413103597975284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,7 +1654,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &4090888821281405361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,7 +2075,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &5019616377690590294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2280,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &5650301800296772733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2559,7 +2568,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &6101938848064088375
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,7 +2962,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &6377626686806099322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,7 +3148,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &6560424708402531066
 GameObject:
   m_ObjectHideFlags: 0
@@ -3345,7 +3354,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &6986620681814189719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3560,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &7008629994894141130
 GameObject:
   m_ObjectHideFlags: 0
@@ -4085,7 +4094,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &7868699905459752525
 GameObject:
   m_ObjectHideFlags: 0
@@ -4374,7 +4383,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &8867114412592257876
 GameObject:
   m_ObjectHideFlags: 0
@@ -4583,7 +4592,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &8884621052982740328
 GameObject:
   m_ObjectHideFlags: 0

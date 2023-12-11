@@ -130,7 +130,7 @@ public class ChairCollision : Agent
     {
         // Check if touching Ground
         sensor.AddObservation(bp.groundContact.touchingGround);
-        sensor.AddObservation(bp.groundContact.touchingObst);
+        
 
         // Get Velocities in Context of the Orientation Cube Space
         sensor.AddObservation(m_OrientationCube.transform.InverseTransformDirection(bp.rb.velocity));
@@ -305,7 +305,7 @@ public class ChairCollision : Agent
     {
         foreach (var bodyPart in m_JointDriveController.bodyPartsList)
         {
-           if(bodyPart.groundContact.touchingObst)
+           if(bodyPart.groundContact.touchingStairs)
             {
                 return true;
             }

@@ -12,7 +12,7 @@ __13.11 -> 17.11__
 __20.11 -> 25.11__
 
 - [ ] Train on Stairs
-- [ ] Experiment with different Surface Properties
+- [x] Experiment with different Surface Properties
 - [x] Fix Controller to make it more intutative
 
 
@@ -39,6 +39,12 @@ The different types of terrains are stored under here:
 ![image](https://github.com/Caileannn/ml-agents-simone/assets/25906839/a9542e0d-e031-4243-958b-8e54f363b591)
 
 You can enable whichever one you prefer!
+
+### Surface Material ###
+
+List of surface material properties can be found [here](https://medium.com/sun-dog-studios/rapid-unity-tutorials-1-physics-materials-68758351fd8a)
+
+Different Materials can be dropped onto the box collider of any object under ```material```. I tested the agent on the 'icy floor' material, and it seemed to function fine - you could get different results from changing the speed of the agent (?)
 
 ## Agent setup for Inference ##
 

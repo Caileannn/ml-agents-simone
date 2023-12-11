@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Unity.MLAgents;
+using Unity.MLAgentsExamples;
 using UnityEngine.Events;
 using System;
+using Unity.VisualScripting;
 
 namespace Unity.MLAgentsExamples
 {
@@ -19,6 +21,9 @@ namespace Unity.MLAgentsExamples
 
         [Header("Use Controller")]
         public bool useController = false;
+
+        [Header("End Episode After Touch")]
+        public bool m_EndEpisodeOnTouch = false;
 
         [Header("Mesh Settings")]
         [SerializeField]
@@ -70,6 +75,18 @@ namespace Unity.MLAgentsExamples
         [HideInInspector]
         public EnvironmentController envController;
 
+        [HideInInspector]
+        public int m_SwitchStairs = 1;
+        public bool m_InitialSpawn = true;
+        public Vector3 m_StartingStairPosition = Vector3.zero;
+        public List<GameObject> m_StairChildren = new List<GameObject>();
+
+        [Header("Stair Collection")]
+        public GameObject m_StairCollection;
+
+       
+
+
         // Start is called before the first frame update
 
         void OnEnable()
@@ -99,6 +116,14 @@ namespace Unity.MLAgentsExamples
 
             m_startingPos = transform.position;
 
+            if (chair.gameObject.GetComponent<Walker>().m_ScramblerTraining)
+            {
+                foreach (Transform child in m_StairCollection.transform)
+                {
+                    m_StairChildren.Add(child.gameObject);
+                }
+            }
+
             if (respawnIfTouched)
             {
                 MoveTargetToRandomPosition();
@@ -122,10 +147,111 @@ namespace Unity.MLAgentsExamples
         /// </summary>
         public void MoveTargetToRandomPosition()
         {
-            var newTargetPos = m_startingPos + (Random.insideUnitSphere * spawnRadius);
-            newTargetPos.y = m_startingPos.y;
-            transform.position = newTargetPos;
+            // If scrambler training is on, spawn target on top of stairs
+            try
+            {
+                if (chair.gameObject.GetComponent<Walker>().m_ScramblerTraining)
+                {
+
+                    if (m_InitialSpawn)
+                    {
+                        m_InitialSpawn = false;
+                        m_SwitchStairs = 1;
+
+                        m_StartingStairPosition = m_StairChildren[m_SwitchStairs - 1].transform.position;
+                        SetScramlberPosition(m_SwitchStairs);
+
+
+                    }
+
+                    else
+
+                    {
+
+                        if (m_SwitchStairs == 1)
+                        {
+                            m_SwitchStairs++;
+                        }
+
+                        else if (m_SwitchStairs == 2)
+                        {
+                            m_SwitchStairs--;
+                        }
+
+                        SetScramlberPosition(m_SwitchStairs);
+                    }
+
+                }
+
+                else
+
+                {
+                    var newTargetPos = m_startingPos + (Random.insideUnitSphere * spawnRadius);
+                    newTargetPos.y = m_startingPos.y;
+                    transform.position = newTargetPos;
+                }
+            }
+            catch
+            {
+                var newTargetPos = m_startingPos + (Random.insideUnitSphere * spawnRadius);
+                newTargetPos.y = m_startingPos.y;
+                transform.position = newTargetPos;
+            }
+
         }
+
+        public void SetScramlberPosition(int stairSwitch)
+        {
+            SetRandomPositionForStairs(m_StairChildren[stairSwitch-1]);
+
+            var sHeight = (m_StairChildren[stairSwitch-1].GetComponent<StairsScaler>().m_ScaleY*3) + 18;
+
+            var center = m_StairChildren[stairSwitch-1].GetComponentInChildren<Renderer>().bounds.center;
+
+            transform.position = new Vector3(center.x, sHeight, center.z);
+           
+        }
+
+        public void SetRandomPositionForStairs(GameObject stair)
+        {
+            // Set random position of a stair
+            // Check if anything is already there
+            // Change its position and place target there
+            var newPos = m_StartingStairPosition + (Random.insideUnitSphere * spawnRadius);
+            // Set new stair height
+            stair.GetComponent<StairsScaler>().m_ScaleY = Academy.Instance.EnvironmentParameters.GetWithDefault("stair_height", 0.01f);
+            newPos.y = m_StartingStairPosition.y;
+            Collider[] hitColliders;
+            bool freeSpace = true;
+            bool breakLoop = false;
+
+            while (!breakLoop) 
+            {
+                hitColliders = Physics.OverlapBox(newPos, (stair.transform.localScale * 40) / 2, Quaternion.identity);
+                if (hitColliders.Length > 0)
+                {
+                    freeSpace = true;
+                    foreach (Collider collider in hitColliders)
+                    {
+                        if (collider.tag == "agent")
+                        {
+                            newPos = m_StartingStairPosition + (Random.insideUnitSphere * spawnRadius);
+                            newPos.y = m_StartingStairPosition.y;
+                            freeSpace = false;
+                        }
+                    }
+
+                    if (freeSpace)
+                    {
+                        breakLoop = true;
+                    }
+                }
+            }
+
+            stair.transform.position = newPos;
+        }
+
+        
 
         private void OnCollisionEnter(Collision col)
         {
@@ -134,7 +260,11 @@ namespace Unity.MLAgentsExamples
                 onCollisionEnterEvent.Invoke(col);
                 if (respawnIfTouched)
                 {
-                    chair.SetReward(1f);
+                    chair.AddReward(1f);
+                    if (m_EndEpisodeOnTouch)
+                    {
+                        chair.EndEpisode();
+                    }
                     MoveTargetToRandomPosition();
                 }
             }

@@ -118,11 +118,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -50
+    limit: -65
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 50
+    limit: 65
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -205,7 +205,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &2107960328670488558
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +411,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.0006198673, y: 0.8989975, z: -0.039531723}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -431,12 +431,12 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -40
+    limit: -60
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 40
-    bounciness: 0
+    limit: 105
+    bounciness: 1
     contactDistance: 0
   m_AngularYZLimitSpring:
     spring: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &2907507614063161647
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,11 +637,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -50
+    limit: -65
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 50
+    limit: 65
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -724,7 +724,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &3022150810398622485
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,11 +843,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -50
+    limit: -75
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 50
+    limit: 75
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -926,11 +926,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &3625633691884277986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1029,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 1.1704572, y: -0.14882693, z: 1.0298066}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -1132,11 +1132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &3677055482454108232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1345,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 0
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -1417,7 +1417,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &4685213736971843660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,11 +1536,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -40
+    limit: -60
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 40
+    limit: 105
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -1623,7 +1623,7 @@ MonoBehaviour:
   penalizeGroundContact: 1
   groundContactPenalty: -0.002
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &4871452371939253621
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1889,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: -0.00012919867, y: 1.1056154, z: -0.014903067}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 0, z: -1}
   m_XMotion: 0
@@ -1897,7 +1897,7 @@ ConfigurableJoint:
   m_ZMotion: 0
   m_AngularXMotion: 1
   m_AngularYMotion: 0
-  m_AngularZMotion: 0
+  m_AngularZMotion: 1
   m_LinearLimitSpring:
     spring: 0
     damper: 0
@@ -1924,7 +1924,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 0
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -1996,7 +1996,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &5777259271730693716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,16 +2049,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 219
+    VectorObservationSize: 233
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 30
+      m_NumContinuousActions: 34
       BranchSizes: 
-    VectorActionSize: 1e000000
+    VectorActionSize: 22000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 6c625593ea946484995cf5e4ec762dc7, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: c_Walker
@@ -2083,18 +2083,23 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  m_TargetWalkingSpeed: 10
+  m_TargetWalkingSpeed: 6
   m_Spring: 40000
   m_Dampen: 5000
   m_Force: 20000
-  rWalkSpeedEachEpisode: 1
+  rWalkSpeedEachEpisode: 0
   earlyTraining: 0
   rJointForcesEachEpisode: 0
+  m_RandomiseYRotation: 1
+  m_RandomiseXYZRotation: 0
   getUpTraining: 0
   balanceTraining: 0
   m_ModelSwap: 0
   m_ProximitySwapper: 0
   m_SwitchModelAfterFalling: 0
+  m_ScramblerTraining: 0
+  m_StepCountAtLastMeter: 0
+  m_LastXPosition: 0
   m_FinishedSwap: 0
   m_ModelSwapper: {fileID: 0}
   target: {fileID: 0}
@@ -2149,7 +2154,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5777259271730693716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d4f1f9b90b1b3949a25ccabbf8429d4, type: 3}
   m_Name: 
@@ -2158,8 +2163,6 @@ MonoBehaviour:
   nnModelList: []
   currentModel: 0
   m_PastModel: 0
-  m_GetupModel: 4
-  m_WalkerModel: 4
 --- !u!1 &6163716254022380080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,7 +2365,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &6628358011295906335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,11 +2567,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &6794064008694923825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,11 +2675,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!114 &2576851963027223328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2684,12 +2687,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6794064008694923825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c07b818612782c47bc265efc0b072dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_BalanceSwap: swap_Balance
+  m_WalkerSwap: swap_Walker
+  m_SloperSwap: swap_Sloper
+  m_GetupSwap: swap_Getup
 --- !u!1 &7331846505223066426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,7 +2799,7 @@ ConfigurableJoint:
   m_ZMotion: 0
   m_AngularXMotion: 1
   m_AngularYMotion: 0
-  m_AngularZMotion: 0
+  m_AngularZMotion: 1
   m_LinearLimitSpring:
     spring: 0
     damper: 0
@@ -2820,7 +2826,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 0
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -2892,7 +2898,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &7463391020628981378
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,11 +3122,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -50
+    limit: -75
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 50
+    limit: 75
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -3199,11 +3205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 0
+  agentDoneOnGroundContact: 1
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1 &8666002640045771141
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,7 +3313,7 @@ ConfigurableJoint:
   m_ZMotion: 0
   m_AngularXMotion: 1
   m_AngularYMotion: 0
-  m_AngularZMotion: 0
+  m_AngularZMotion: 1
   m_LinearLimitSpring:
     spring: 0
     damper: 0
@@ -3334,7 +3340,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 0
+    limit: 10
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -3406,7 +3412,7 @@ MonoBehaviour:
   penalizeGroundContact: 0
   groundContactPenalty: 0
   touchingGround: 0
-  touchingObst: 0
+  touchingStairs: 0
 --- !u!1001 &154904124154377892
 PrefabInstance:
   m_ObjectHideFlags: 0
