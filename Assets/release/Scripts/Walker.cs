@@ -78,6 +78,9 @@ public class Walker : Agent
     private Transform m_Stairs;
     private Vector3 m_StairBounds;
 
+    [Header("Slip Training")]
+    public bool m_SlipTraining = false;
+
 
     [HideInInspector]
     public bool m_FinishedSwap = false;
@@ -469,10 +472,26 @@ public class Walker : Agent
 
 
         }
+        else if (m_SlipTraining)
+        {
+            float matchSpeedWeight = 1.0f;
+            float weightReward = matchSpeedWeight * (matchSpeedReward * lookAtTargetReward);
+            var zAngle = DeltaAngle(seat.eulerAngles.z);
+            var xAngle = DeltaAngle(seat.eulerAngles.x);
+            float balanceReward = zAngle * xAngle;
+            AddReward(weightReward * balanceReward);
+            // Log("msp: " + weightReward + " balance: " + balanceReward);
+        }
         else
         {
-           AddReward(matchSpeedReward * lookAtTargetReward);
-           Debug.Log("look: " + lookAtTargetReward + " msp: " + matchSpeedReward);
+            //AddReward(matchSpeedReward * lookAtTargetReward);
+            //AddReward(lookAtTargetReward * DistanceFromTarget(20f));
+            //AddReward(-0.002f);
+            //Debug.Log("look: " + lookAtTargetReward + " dist: " + DistanceFromTarget(20f));
+            //Debug.Log("look: " + lookAtTargetReward + " msp: " + matchSpeedReward);
+
+            AddReward(-0.002f);
+            AddReward((matchSpeedReward-1) * .02f);
 
         }
 

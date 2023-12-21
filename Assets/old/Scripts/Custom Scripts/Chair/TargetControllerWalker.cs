@@ -126,7 +126,7 @@ namespace Unity.MLAgentsExamples
 
             if (respawnIfTouched)
             {
-                MoveTargetToRandomPosition();
+                //MoveTargetToRandomPosition();
             }
         }
 
@@ -257,6 +257,11 @@ namespace Unity.MLAgentsExamples
         {
             if (col.transform.CompareTag(tagToDetect))
             {
+                chair.AddReward(10f);
+                if (m_EndEpisodeOnTouch)
+                    {
+                        chair.EndEpisode();
+                    }
                 onCollisionEnterEvent.Invoke(col);
                 if (respawnIfTouched)
                 {

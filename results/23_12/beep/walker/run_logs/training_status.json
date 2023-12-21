@@ -1,0 +1,65 @@
+{
+    "c_Walker": {
+        "checkpoints": [
+            {
+                "steps": 499055,
+                "file_path": "results\\23_12/beep/walker\\c_Walker\\c_Walker-499055.onnx",
+                "reward": 369.0321044921875,
+                "creation_time": 1702901355.9439752,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/walker\\c_Walker\\c_Walker-499055.pt"
+                ]
+            },
+            {
+                "steps": 999349,
+                "file_path": "results\\23_12/beep/walker\\c_Walker\\c_Walker-999349.onnx",
+                "reward": 660.66359278361,
+                "creation_time": 1702901839.6275885,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/walker\\c_Walker\\c_Walker-999349.pt"
+                ]
+            },
+            {
+                "steps": 1499785,
+                "file_path": "results\\23_12/beep/walker\\c_Walker\\c_Walker-1499785.onnx",
+                "reward": 821.2396751072096,
+                "creation_time": 1702902329.5074525,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/walker\\c_Walker\\c_Walker-1499785.pt"
+                ]
+            },
+            {
+                "steps": 1999931,
+                "file_path": "results\\23_12/beep/walker\\c_Walker\\c_Walker-1999931.onnx",
+                "reward": 1025.1831611633302,
+                "creation_time": 1702902800.7999127,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/walker\\c_Walker\\c_Walker-1999931.pt"
+                ]
+            },
+            {
+                "steps": 2085118,
+                "file_path": "results\\23_12/beep/walker\\c_Walker\\c_Walker-2085118.onnx",
+                "reward": 1006.7688202909801,
+                "creation_time": 1702902881.32636,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/walker\\c_Walker\\c_Walker-2085118.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2085118,
+            "file_path": "results\\23_12/beep/walker\\c_Walker.onnx",
+            "reward": 1006.7688202909801,
+            "creation_time": 1702902881.32636,
+            "auxillary_file_paths": [
+                "results\\23_12/beep/walker\\c_Walker\\c_Walker-2085118.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "c_Walker": {
+        "checkpoints": [
+            {
+                "steps": 499925,
+                "file_path": "results\\23_12/beep/climber3\\c_Walker\\c_Walker-499925.onnx",
+                "reward": 4.523666838804881,
+                "creation_time": 1702918898.6042433,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/climber3\\c_Walker\\c_Walker-499925.pt"
+                ]
+            },
+            {
+                "steps": 999875,
+                "file_path": "results\\23_12/beep/climber3\\c_Walker\\c_Walker-999875.onnx",
+                "reward": 4.5522858848819485,
+                "creation_time": 1702919248.0478802,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/climber3\\c_Walker\\c_Walker-999875.pt"
+                ]
+            },
+            {
+                "steps": 1317873,
+                "file_path": "results\\23_12/beep/climber3\\c_Walker\\c_Walker-1317873.onnx",
+                "reward": null,
+                "creation_time": 1702919460.3296225,
+                "auxillary_file_paths": [
+                    "results\\23_12/beep/climber3\\c_Walker\\c_Walker-1317873.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1317873,
+            "file_path": "results\\23_12/beep/climber3\\c_Walker.onnx",
+            "reward": null,
+            "creation_time": 1702919460.3296225,
+            "auxillary_file_paths": [
+                "results\\23_12/beep/climber3\\c_Walker\\c_Walker-1317873.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

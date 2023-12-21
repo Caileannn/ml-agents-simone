@@ -19,6 +19,9 @@ TagManager:
   - swap_Walker
   - stairs
   - ag
+  - object
+  - banana
+  - manager
   layers:
   - Default
   - TransparentFX

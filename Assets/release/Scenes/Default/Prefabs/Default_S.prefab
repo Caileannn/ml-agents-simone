@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2059,7 +2059,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 4b815abdbd934a54a8842bb228d4bf57, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: c_Walker
@@ -2084,14 +2084,14 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 5000
-  m_TargetWalkingSpeed: 6
-  m_Spring: 20000
-  m_Dampen: 3500
-  m_Force: 15000
-  rWalkSpeedEachEpisode: 1
+  m_TargetWalkingSpeed: 1.5
+  m_Spring: 40000
+  m_Dampen: 5000
+  m_Force: 20000
+  rWalkSpeedEachEpisode: 0
   earlyTraining: 0
   rJointForcesEachEpisode: 0
-  m_RandomiseYRotation: 1
+  m_RandomiseYRotation: 0
   m_RandomiseXYZRotation: 0
   getUpTraining: 0
   balanceTraining: 0
@@ -2102,6 +2102,7 @@ MonoBehaviour:
   m_StepCountAtLastMeter: 0
   m_LastXPosition: 0
   m_StairsTraining: 0
+  m_SlipTraining: 1
   m_FinishedSwap: 0
   m_ModelSwapper: {fileID: 0}
   target: {fileID: 0}
@@ -2363,7 +2364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2569,7 +2570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2677,7 +2678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
@@ -2918,7 +2919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1091865374527005730
 Transform:
   m_ObjectHideFlags: 0
@@ -2941,7 +2942,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7463391020628981378}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -2992,7 +2993,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7463391020628981378}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a818409334800a4aaef031a0616d586, type: 3}
   m_Name: 
@@ -3207,7 +3208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  agentDoneOnGroundContact: 1
+  agentDoneOnGroundContact: 0
   penalizeGroundContact: 1
   groundContactPenalty: -1
   touchingGround: 0
