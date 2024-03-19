@@ -22,6 +22,8 @@ TagManager:
   - object
   - banana
   - manager
+  - sit
+  - agent_seat
   layers:
   - Default
   - TransparentFX

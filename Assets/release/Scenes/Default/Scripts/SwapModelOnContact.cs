@@ -55,7 +55,10 @@ namespace Unity.MLAgentsExamples
 
         void OnTriggerExit(Collider col)
         {
-            m_ModelSwapper.SwitchModel(4, m_Agent);
+            if (col.gameObject.CompareTag(m_GetupSwap))
+            {
+                m_ModelSwapper.SwitchModel(4, m_Agent);
+            }
         }
     }
 }

@@ -7099,6 +7099,10 @@ PrefabInstance:
       propertyPath: m_SecondaryAxis.z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 8374465865967285830, guid: 928488cd10159db41b9b1db337c14822, type: 3}
+      propertyPath: m_StairsTraining
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8840051760197249428, guid: 928488cd10159db41b9b1db337c14822, type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: 0.89606714

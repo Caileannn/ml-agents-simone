@@ -16,17 +16,30 @@ public class ModelSwap : MonoBehaviour
     public NNModel m_InitialModel;
     // public Agent agent;
 
-    [HideInInspector] public List<NNModel> nnModelList;
+    public List<NNModel> nnModelList;
+    [HideInInspector]
+    public Walker agent;
     [HideInInspector] public int currentModel = 0;
     [HideInInspector] public int m_PastModel = 0;
 
     // Path to .onnx files
     string m_relPath = string.Empty;
 
+    private void OnEnable()
+    {
+        Waypoint.SwapModelOnWaypointReached += SwapModelOnReachingWaypoint;
+    }
+
+    private void OnDisable()
+    {
+        Waypoint.SwapModelOnWaypointReached -= SwapModelOnReachingWaypoint;
+    }
+
     private void Start()
     {
-        // Load Models From Dir
-        NNFileList();
+        // Load Models From File Directory
+        //NNFileList();
+        agent = this.GetComponent<Walker>();
     }
 
 
@@ -46,7 +59,7 @@ public class ModelSwap : MonoBehaviour
 
     public void ConvertNNModels(FileInfo[] nnList)
     {
-        foreach (FileInfo element in nnList) 
+        foreach (FileInfo element in nnList)
         {
             var converter = new ONNXModelConverter(true);
             byte[] modelData = File.ReadAllBytes(element.FullName.ToString());
@@ -85,7 +98,7 @@ public class ModelSwap : MonoBehaviour
         if (modelActive == 0)
         {
             currentModel -= 1;
-            if(currentModel < 0)
+            if (currentModel < 0)
             {
                 currentModel = 0;
             }
@@ -98,7 +111,7 @@ public class ModelSwap : MonoBehaviour
         {
             inst.SetModel("Swap", m_InitialModel);
         }
-        else if (modelActive == 1) 
+        else if (modelActive == 1)
         {
             currentModel += 1;
             if (currentModel > nnModelList.Count - 1)
@@ -121,11 +134,22 @@ public class ModelSwap : MonoBehaviour
     // Set Model by name
     public void SwitchModel(string modelName, Agent inst)
     {
-        m_PastModel = currentModel;
+        //m_PastModel = currentModel;
         FindModelByName(modelName);
-        inst.SetModel("Swap", nnModelList[currentModel]);
-        GlobalVars.g_CurrentModel = nnModelList[currentModel].name;
-        Debug.Log("Current Model: " + GlobalVars.g_CurrentModel);
+        inst.SetModel("c_Walker", nnModelList[currentModel]);
+
+        if (modelName.Equals("24_Walker"))
+        {
+            agent.m_SelectedBrain = Walker.Brain.Walker;
+        }else if (modelName.Equals("Stairs"))
+        {
+            agent.m_SelectedBrain = Walker.Brain.DMScrambler;
+        }else if (modelName.Equals("Climber"))
+        {
+            agent.m_SelectedBrain = Walker.Brain.DMScrambler;
+        }
+
+        Debug.Log("Current Model: " + nnModelList[currentModel].name);
     }
 
     private void FindModelByName(string modelName)
@@ -133,11 +157,17 @@ public class ModelSwap : MonoBehaviour
         int i = 0;
         foreach (NNModel element in nnModelList)
         {
-            if(element.name.Equals(modelName+".onnx"))
+            if(element.name.Equals(modelName))
             {
                 currentModel = i;
                 return;
             }
+            i++;
         }
+    }
+
+    private void SwapModelOnReachingWaypoint(string modelName)
+    {
+        SwitchModel(modelName, agent);
     }
 };
